@@ -32,9 +32,28 @@
             .no-print { display: none !important; }
             .cv-content { padding: 0 !important; margin: 0 !important; }
             body { background: white !important; }
+            .editable { border: none !important; background: none !important; }
         }
         .fade-in { opacity: 0; animation: fadeIn 0.5s ease-in forwards; }
         @keyframes fadeIn { to { opacity: 1; } }
+        .editable {
+            border: 1px dashed #5D5CDE;
+            background: rgba(93, 92, 222, 0.05);
+            border-radius: 4px;
+            padding: 2px 4px;
+            transition: all 0.2s ease;
+        }
+        .editable:focus {
+            outline: 2px solid #5D5CDE;
+            background: rgba(93, 92, 222, 0.1);
+        }
+        .edit-mode .editable-section {
+            position: relative;
+        }
+        .edit-mode .editable-section:hover {
+            background: rgba(93, 92, 222, 0.02);
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
@@ -64,10 +83,20 @@
                         <p class="text-gray-600 dark:text-gray-400">Professional CV Generator</p>
                     </div>
                 </div>
-                <button onclick="window.print()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
-                    <i class="fas fa-download"></i>
-                    <span>Download CV</span>
-                </button>
+                <div class="flex space-x-3">
+                    <button id="editBtn" onclick="toggleEditMode()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit CV</span>
+                    </button>
+                    <button id="saveBtn" onclick="saveChanges()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2 hidden">
+                        <i class="fas fa-save"></i>
+                        <span>Save Changes</span>
+                    </button>
+                    <button onclick="window.print()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -101,6 +130,10 @@
     </div>
 
     <script>
+        let isEditMode = false;
+        let currentJobTitle = null;
+        let editedData = {};
+
         const jobTitles = [
             {
                 title: "Payroll Administrator",
@@ -1199,8 +1232,99 @@
             container.innerHTML = html;
         }
 
+        function toggleEditMode() {
+            const editBtn = document.getElementById('editBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const cvContainer = document.getElementById('cvContainer');
+            
+            isEditMode = !isEditMode;
+            
+            if (isEditMode) {
+                editBtn.innerHTML = '<i class="fas fa-times"></i><span>Cancel Edit</span>';
+                editBtn.className = "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2";
+                saveBtn.classList.remove('hidden');
+                cvContainer.classList.add('edit-mode');
+                makeContentEditable();
+            } else {
+                editBtn.innerHTML = '<i class="fas fa-edit"></i><span>Edit CV</span>';
+                editBtn.className = "bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2";
+                saveBtn.classList.add('hidden');
+                cvContainer.classList.remove('edit-mode');
+                makeContentReadonly();
+                // Regenerate CV to cancel changes
+                if (currentJobTitle) {
+                    generateCV(currentJobTitle);
+                }
+            }
+        }
+
+        function makeContentEditable() {
+            const editableElements = document.querySelectorAll('[data-editable]');
+            editableElements.forEach(element => {
+                element.contentEditable = true;
+                element.classList.add('editable');
+            });
+        }
+
+        function makeContentReadonly() {
+            const editableElements = document.querySelectorAll('[data-editable]');
+            editableElements.forEach(element => {
+                element.contentEditable = false;
+                element.classList.remove('editable');
+            });
+        }
+
+        function saveChanges() {
+            if (!currentJobTitle) return;
+            
+            // Collect edited data
+            const profile = document.querySelector('[data-field="profile"]').textContent;
+            const keySkills = Array.from(document.querySelectorAll('[data-field="keySkills"]')).map(el => el.textContent);
+            const skills = Array.from(document.querySelectorAll('[data-field="skills"]')).map(el => el.textContent);
+            const toolsAndSystems = Array.from(document.querySelectorAll('[data-field="toolsAndSystems"]')).map(el => el.textContent);
+            
+            // Collect experience data
+            const experiences = Array.from(document.querySelectorAll('[data-field="experience"]')).map(expEl => {
+                return {
+                    company: expEl.querySelector('[data-exp-field="company"]').textContent,
+                    position: expEl.querySelector('[data-exp-field="position"]').textContent,
+                    period: expEl.querySelector('[data-exp-field="period"]').textContent,
+                    duties: Array.from(expEl.querySelectorAll('[data-exp-field="duty"]')).map(duty => duty.textContent)
+                };
+            });
+
+            // Update the template data
+            if (!editedData[currentJobTitle]) {
+                editedData[currentJobTitle] = JSON.parse(JSON.stringify(cvTemplates[currentJobTitle]));
+            }
+            
+            editedData[currentJobTitle].profile = profile;
+            editedData[currentJobTitle].keySkills = keySkills;
+            editedData[currentJobTitle].skills = skills;
+            editedData[currentJobTitle].toolsAndSystems = toolsAndSystems;
+            editedData[currentJobTitle].experience = experiences;
+
+            // Exit edit mode
+            toggleEditMode();
+            
+            // Show success message
+            showNotification('Changes saved successfully!', 'success');
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 fade-in ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
         function generateCV(jobTitle) {
-            const template = cvTemplates[jobTitle];
+            currentJobTitle = jobTitle;
+            const template = editedData[jobTitle] || cvTemplates[jobTitle];
             if (!template) return;
 
             const cvContent = document.getElementById('cvContent');
@@ -1232,16 +1356,16 @@
                     </div>
 
                     <!-- Professional Profile -->
-                    <div class="mb-6">
+                    <div class="mb-6 editable-section">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-user-circle text-primary mr-2"></i>
                             Professional Profile
                         </h3>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${template.profile}</p>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-editable data-field="profile">${template.profile}</p>
                     </div>
 
                     <!-- Key Skills -->
-                    <div class="mb-6">
+                    <div class="mb-6 editable-section">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-key text-primary mr-2"></i>
                             Key Skills
@@ -1250,27 +1374,27 @@
                             ${template.keySkills.map(skill => `
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-chevron-right text-primary text-sm"></i>
-                                    <span class="text-gray-700 dark:text-gray-300 text-sm font-medium">${skill}</span>
+                                    <span class="text-gray-700 dark:text-gray-300 text-sm font-medium" data-editable data-field="keySkills">${skill}</span>
                                 </div>
                             `).join('')}
                         </div>
                     </div>
 
                     <!-- Tools & Systems -->
-                    <div class="mb-6">
+                    <div class="mb-6 editable-section">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-tools text-primary mr-2"></i>
                             Tools & Systems
                         </h3>
                         <div class="flex flex-wrap gap-2">
                             ${template.toolsAndSystems.map(tool => `
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">${tool}</span>
+                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium" data-editable data-field="toolsAndSystems">${tool}</span>
                             `).join('')}
                         </div>
                     </div>
 
                     <!-- Additional Skills & Abilities -->
-                    <div class="mb-6">
+                    <div class="mb-6 editable-section">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-star text-primary mr-2"></i>
                             Additional Skills & Abilities
@@ -1279,31 +1403,31 @@
                             ${template.skills.map(skill => `
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-check text-primary text-sm"></i>
-                                    <span class="text-gray-700 dark:text-gray-300 text-sm">${skill}</span>
+                                    <span class="text-gray-700 dark:text-gray-300 text-sm" data-editable data-field="skills">${skill}</span>
                                 </div>
                             `).join('')}
                         </div>
                     </div>
 
                     <!-- Work Experience -->
-                    <div class="mb-6">
+                    <div class="mb-6 editable-section">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                             <i class="fas fa-briefcase text-primary mr-2"></i>
                             Work Experience
                         </h3>
                         <div class="space-y-6">
                             ${template.experience.map(exp => `
-                                <div class="border-l-2 border-primary pl-4">
+                                <div class="border-l-2 border-primary pl-4" data-field="experience">
                                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                        <h4 class="font-semibold text-gray-900 dark:text-white">${exp.company}</h4>
-                                        <span class="text-sm text-gray-500 dark:text-gray-400">${exp.period}</span>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white" data-editable data-exp-field="company">${exp.company}</h4>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400" data-editable data-exp-field="period">${exp.period}</span>
                                     </div>
-                                    <p class="text-primary font-medium mb-2">${exp.position}</p>
+                                    <p class="text-primary font-medium mb-2" data-editable data-exp-field="position">${exp.position}</p>
                                     <ul class="space-y-1">
                                         ${exp.duties.map(duty => `
                                             <li class="text-gray-700 dark:text-gray-300 text-sm flex items-start">
                                                 <i class="fas fa-chevron-right text-primary text-xs mt-1 mr-2 flex-shrink-0"></i>
-                                                <span>${duty}</span>
+                                                <span data-editable data-exp-field="duty">${duty}</span>
                                             </li>
                                         `).join('')}
                                     </ul>
@@ -1402,6 +1526,11 @@
             `;
             
             cvContent.innerHTML = html;
+            
+            // If we're in edit mode, make content editable
+            if (isEditMode) {
+                makeContentEditable();
+            }
         }
 
         // Initialize the application
