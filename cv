@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Angelos - CV Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            .cv-content { padding: 0 !important; margin: 0 !important; }
+            body { background: white !important; }
+        }
+        .fade-in { opacity: 0; animation: fadeIn 0.5s ease-in forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-tie text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Scott Angelos</h1>
+                        <p class="text-gray-600 dark:text-gray-400">Professional CV Generator</p>
+                    </div>
+                </div>
+                <button onclick="window.print()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
+                    <i class="fas fa-download"></i>
+                    <span>Download CV</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Job Selection Sidebar -->
+            <div class="lg:col-span-1 no-print">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Select Job Title</h3>
+                    <div class="space-y-2" id="jobTitles">
+                        <!-- Job titles will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CV Display Area -->
+            <div class="lg:col-span-3">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg cv-content" id="cvContainer">
+                    <div class="p-8" id="cvContent">
+                        <!-- CV content will be displayed here -->
+                        <div class="text-center py-16">
+                            <i class="fas fa-file-alt text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Select a Job Title</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Choose a position from the sidebar to generate a tailored CV</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const jobTitles = [
+            {
+                title: "Payroll Administrator",
+                icon: "fas fa-calculator",
+                category: "Finance & Administration"
+            },
+            {
+                title: "Bookkeeper",
+                icon: "fas fa-book",
+                category: "Finance & Administration"
+            },
+            {
+                title: "Project Manager",
+                icon: "fas fa-tasks",
+                category: "Management"
+            },
+            {
+                title: "Operations Manager",
+                icon: "fas fa-cogs",
+                category: "Management"
+            },
+            {
+                title: "Accounts Administrator",
+                icon: "fas fa-file-invoice-dollar",
+                category: "Finance & Administration"
+            },
+            {
+                title: "Systems Administrator",
+                icon: "fas fa-server",
+                category: "IT & Technology"
+            },
+            {
+                title: "Team Leader",
+                icon: "fas fa-users",
+                category: "Management"
+            },
+            {
+                title: "Stock Controller",
+                icon: "fas fa-boxes",
+                category: "Operations"
+            }
+        ];
+
+        const cvTemplates = {
+            "Payroll Administrator": {
+                profile: "Experienced Payroll Administrator with over 7 years of comprehensive payroll management across multiple industries. Skilled in processing payroll for large staff complements (up to 690 employees), ensuring full compliance with SARS requirements, and managing EMP submissions. Proficient in Sage Pastel Payroll, Sage One, Xero, and PSIBER systems. Known for accuracy, confidentiality, and ability to meet strict deadlines while supporting HR functions.",
+                keySkills: [
+                    "Payroll processing for multiple companies (690 employees)",
+                    "EMP201 & EMP501 submissions",
+                    "PAYE calculations",
+                    "Employee records management (new hires, terminations, pay changes)",
+                    "Legislative compliance in payroll",
+                    "Payroll reconciliations"
+                ],
+                toolsAndSystems: [
+                    "SAGE Pastel Payroll & HR",
+                    "Xero Payroll",
+                    "Sage One Accounting",
+                    "PSIBER",
+                    "Microsoft Office Suite",
+                    "SARS eFiling System"
+                ],
+                skills: [
+                    "End-to-End Payroll Processing (monthly & bi-weekly)",
+                    "SARS eFiling & Compliance (EMP201 & EMP501)",
+                    "HR Records Management (onboarding, terminations, pay adjustments)",
+                    "Payroll Reconciliations & Reporting",
+                    "Legislative Updates & Compliance Monitoring",
+                    "Employee Queries & Support",
+                    "Tax Calculations & PAYE Management",
+                    "Confidentiality & Data Protection",
+                    "Multi-company Payroll Management",
+                    "Regulatory Compliance & Documentation"
+                ],
+                experience: [
+                    {
+                        company: "KCE Consulting",
+                        position: "Payroll Administrator / Junior Bookkeeper",
+                        period: "Feb 2020 - Current",
+                        duties: [
+                            "Processed payroll for 690 employees across multiple companies, maintaining 100% accuracy",
+                            "Submitted monthly EMP201s and bi-annual/annual EMP501s via SARS eFiling with zero late submissions",
+                            "Managed employee records including onboarding, pay adjustments, and terminations",
+                            "Implemented payroll procedure improvements, reducing processing time by 25%",
+                            "Ensured full compliance with legislative requirements and implemented system updates",
+                            "Performed payroll reconciliations and prepared comprehensive management reports",
+                            "Handled employee payroll queries and provided exceptional customer service"
+                        ]
+                    },
+                    {
+                        company: "Elmarie Winter Consulting Services",
+                        position: "Payroll Administrator (Contract Work)",
+                        period: "Jan 2019 - Jan 2020",
+                        duties: [
+                            "Delivered payroll administration for multiple clients with 100% accuracy",
+                            "Processed new hires, pay changes, and terminations efficiently",
+                            "Developed and documented payroll procedures, improving efficiency by 20%",
+                            "Prepared and distributed pay slips and comprehensive payroll reports",
+                            "Maintained strict confidentiality and data protection standards"
+                        ]
+                    },
+                    {
+                        company: "Initio Networx",
+                        position: "Operations Manager / Payroll Administrator",
+                        period: "Feb 2018 - Aug 2018",
+                        duties: [
+                            "Managed dual role of operations and payroll administration",
+                            "Processed payroll for technical staff including complex commission structures",
+                            "Handled fuel reimbursements and expense management",
+                            "Maintained employee records and processed airtime allowances",
+                            "Calculated and processed commission payments and performance bonuses"
+                        ]
+                    },
+                    {
+                        company: "Initec Computer Hardware",
+                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
+                        period: "Aug 2016 - Feb 2018",
+                        duties: [
+                            "Supervised payroll data collection from site teams and project managers",
+                            "Processed wage calculations for technical teams and project staff",
+                            "Managed employee documentation for Huawei project assignments",
+                            "Coordinated payroll schedules with project timelines and deliverables",
+                            "Handled payroll queries and employee benefit calculations"
+                        ]
+                    },
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Processed bi-weekly wage calculations and commission payments",
+                            "Maintained employee records and handled basic HR administration",
+                            "Calculated sales commissions and performance incentives",
+                            "Assisted with employee queries regarding pay and benefits",
+                            "Supported month-end payroll procedures and reporting"
+                        ]
+                    },
+                    {
+                        company: "Net-King",
+                        position: "Team Leader, Machine Supervisor",
+                        period: "June 2013 - Mar 2015",
+                        duties: [
+                            "Managed timekeeping and attendance records for production team",
+                            "Calculated overtime payments and shift differentials",
+                            "Coordinated payroll data with production schedules",
+                            "Handled basic employee relations and grievance procedures",
+                            "Supported HR functions including leave management and documentation"
+                        ]
+                    },
+                    {
+                        company: "Birds For Africa",
+                        position: "Counter Sales & Stock Controller (Part time)",
+                        period: "Sep 2011 - May 2013",
+                        duties: [
+                            "Maintained employee time records and basic payroll data",
+                            "Assisted with commission calculations for sales staff",
+                            "Handled cash management and daily sales reconciliations",
+                            "Supported basic HR administrative functions",
+                            "Maintained accurate records of staff schedules and hours worked"
+                        ]
+                    }
+                ]
+            },
+            "Bookkeeper": {
+                profile: "Detail-oriented Bookkeeper with 5+ years of experience in full-cycle bookkeeping, accounts reconciliation, and financial reporting. Certified Xero Advisor with expertise in Sage, Pastel, and cloud-based accounting systems. Proven track record in VAT submissions, management accounts preparation, and maintaining accurate financial records for multiple entities. Strong analytical skills with commitment to accuracy and compliance.",
+                keySkills: [
+                    "Recording, reconciling, and maintaining financial transactions",
+                    "Debtors and creditors reconciliations",
+                    "Fixed assets register and VAT reconciliations",
+                    "Management accounts preparation",
+                    "Receipt and bill processing"
+                ],
+                toolsAndSystems: [
+                    "Xero",
+                    "Sage One",
+                    "Receipt Bank",
+                    "Sage Pastel Payroll",
+                    "Microsoft Office Suite"
+                ],
+                skills: [
+                    "Full-Cycle Bookkeeping (Accounts Payable/Receivable)",
+                    "Financial Reconciliations (Bank, Debtors, Creditors)",
+                    "VAT Submissions & Reconciliations (VAT201)",
+                    "Management Accounts Preparation",
+                    "Fixed Assets Register Management",
+                    "Trial Balance Preparation",
+                    "Financial Reporting & Analysis",
+                    "SARS Compliance & Tax Submissions",
+                    "Budget Analysis & Variance Reporting",
+                    "Month-end & Year-end Procedures"
+                ],
+                experience: [
+                    {
+                        company: "KCE Consulting",
+                        position: "Payroll Administrator / Junior Bookkeeper",
+                        period: "Feb 2020 - Current",
+                        duties: [
+                            "Processed bills and receipts through Receipt Bank and Sage Online systems",
+                            "Prepared trial balances for multiple companies using Xero, Pastel, and Sage",
+                            "Conducted monthly debtors and creditors reconciliations with 100% accuracy",
+                            "Prepared comprehensive management accounts and financial reports",
+                            "Performed VAT reconciliations and submitted VAT201 returns on time",
+                            "Maintained Fixed Assets Register and conducted regular reconciliations",
+                            "Supported month-end and year-end closing procedures",
+                            "Liaised with external auditors and provided required documentation"
+                        ]
+                    },
+                    {
+                        company: "Elmarie Winter Consulting Services",
+                        position: "Payroll Administrator (Contract Work)",
+                        period: "Jan 2019 - Jan 2020",
+                        duties: [
+                            "Maintained financial records and accounting entries for contract clients",
+                            "Processed accounts payable and receivable transactions",
+                            "Assisted with bookkeeping and financial reconciliations",
+                            "Supported month-end procedures and financial reporting",
+                            "Maintained accurate documentation for audit purposes"
+                        ]
+                    },
+                    {
+                        company: "Initio Networx",
+                        position: "Operations Manager / Payroll Administrator",
+                        period: "Feb 2018 - Aug 2018",
+                        duties: [
+                            "Managed accounts payable and receivable for ISP operations",
+                            "Processed financial transactions and maintained accurate records",
+                            "Handled commission calculations and financial reconciliations",
+                            "Maintained detailed records of payments and accounts",
+                            "Supported financial operations and reporting requirements"
+                        ]
+                    },
+                    {
+                        company: "Initec Computer Hardware",
+                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
+                        period: "Aug 2016 - Feb 2018",
+                        duties: [
+                            "Managed project billing and financial documentation",
+                            "Processed invoicing through specialized billing systems",
+                            "Maintained accurate financial records for telecommunications projects",
+                            "Handled accounts receivable and client billing processes",
+                            "Supported financial reporting and project accounting"
+                        ]
+                    },
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Managed accounts receivable and payment processing",
+                            "Maintained detailed stock records and conducted regular stock takes",
+                            "Processed sales transactions and prepared daily reports",
+                            "Assisted with customer account management and queries",
+                            "Handled cash management and financial reconciliations"
+                        ]
+                    },
+                    {
+                        company: "Net-King",
+                        position: "Team Leader, Machine Supervisor",
+                        period: "June 2013 - Mar 2015",
+                        duties: [
+                            "Maintained production cost records and inventory valuations",
+                            "Assisted with financial documentation for manufacturing operations",
+                            "Supported cost accounting and production reporting",
+                            "Handled basic bookkeeping functions for department operations",
+                            "Maintained accurate records of materials and labor costs"
+                        ]
+                    },
+                    {
+                        company: "Birds For Africa",
+                        position: "Counter Sales & Stock Controller (Part time)",
+                        period: "Sep 2011 - May 2013",
+                        duties: [
+                            "Processed daily sales transactions and cash reconciliations",
+                            "Maintained inventory records and stock valuations",
+                            "Assisted with basic bookkeeping and financial record keeping",
+                            "Handled cash management and daily sales reporting",
+                            "Supported month-end stock takes and inventory reconciliations"
+                        ]
+                    }
+                ]
+            },
+            "Project Manager": {
+                profile: "Results-driven Project Manager with 5+ years of experience managing complex projects across IT, construction, and telecommunications sectors. Proven track record in leading cross-functional teams, managing budgets up to R5M, and delivering projects on time and within scope. Experienced in client relationship management, vendor coordination, and implementing process improvements that increase efficiency by up to 30%.",
+                keySkills: [
+                    "Project planning and control",
+                    "Contractor and subcontractor management",
+                    "Timeline management and reporting",
+                    "Risk management and quality control",
+                    "Team coordination and communication"
+                ],
+                toolsAndSystems: [
+                    "1CRM",
+                    "Microsoft Office",
+                    "Huawei Billing System",
+                    "Project Management Tools",
+                    "ESupplier System"
+                ],
+                skills: [
+                    "Project Planning & Execution (Agile/Waterfall methodologies)",
+                    "Team Leadership & Cross-functional Coordination",
+                    "Budget Management & Financial Oversight",
+                    "Client Relationship Management",
+                    "Vendor & Contractor Management",
+                    "Risk Assessment & Mitigation",
+                    "Quality Assurance & Control",
+                    "Process Improvement & Optimization",
+                    "Stakeholder Communication & Reporting",
+                    "MS Project, Excel, and Project Management Tools"
+                ],
+                experience: [
+                    {
+                        company: "KCE Consulting",
+                        position: "Payroll Administrator / Junior Bookkeeper",
+                        period: "Feb 2020 - Current",
+                        duties: [
+                            "Managed project aspects of payroll implementation across multiple companies",
+                            "Led process improvement initiatives reducing payroll processing time by 25%",
+                            "Coordinated with external auditors and managed compliance projects",
+                            "Implemented new systems and procedures across different business units",
+                            "Managed stakeholder communication and project reporting for management",
+                            "Oversaw documentation and quality control for all payroll processes"
+                        ]
+                    },
+                    {
+                        company: "Elmarie Winter Consulting Services",
+                        position: "Payroll Administrator (Contract Work)",
+                        period: "Jan 2019 - Jan 2020",
+                        duties: [
+                            "Managed contract-based projects for multiple client implementations",
+                            "Coordinated project timelines and deliverables for payroll setups",
+                            "Led client onboarding projects and system implementations",
+                            "Managed project documentation and compliance requirements",
+                            "Coordinated with stakeholders to ensure project success"
+                        ]
+                    },
+                    {
+                        company: "Initio Networx",
+                        position: "Operations Manager / Payroll Administrator",
+                        period: "Feb 2018 - Aug 2018",
+                        duties: [
+                            "Managed operational projects including ISP partnership implementations",
+                            "Led system integration projects and process development initiatives",
+                            "Coordinated cross-functional teams for service delivery projects",
+                            "Managed project budgets and resource allocation",
+                            "Oversaw quality assurance and project completion milestones"
+                        ]
+                    },
+                    {
+                        company: "Initec Computer Hardware",
+                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
+                        period: "Aug 2016 - Feb 2018",
+                        duties: [
+                            "Led Huawei telecommunications projects from initiation to completion",
+                            "Coordinated with site foremen and ensured proper project documentation",
+                            "Managed project billing through Huawei systems (ISDP & SCS)",
+                            "Processed invoicing via ESupplier system with 100% accuracy",
+                            "Authorized project documentation after thorough quality checks",
+                            "Maintained project schedules and delivered within agreed timeframes"
+                        ]
+                    },
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Managed inventory optimization projects improving stock accuracy by 35%",
+                            "Led sales process improvement initiatives",
+                            "Coordinated between sales and operations teams",
+                            "Managed customer relationship projects and service improvements",
+                            "Oversaw daily operations and process coordination"
+                        ]
+                    },
+                    {
+                        company: "Net-King",
+                        position: "Team Leader, Machine Supervisor",
+                        period: "June 2013 - Mar 2015",
+                        duties: [
+                            "Led production teams of up to 5 members in manufacturing projects",
+                            "Supervised machinery operations and ensured safety compliance",
+                            "Managed project timelines and quality control processes",
+                            "Implemented workflow improvements that increased productivity by 20%",
+                            "Coordinated with management on project progress and resource needs"
+                        ]
+                    },
+                    {
+                        company: "Birds For Africa",
+                        position: "Counter Sales & Stock Controller (Part time)",
+                        period: "Sep 2011 - May 2013",
+                        duties: [
+                            "Managed small-scale inventory optimization projects",
+                            "Coordinated stock management and sales operations",
+                            "Supported customer service improvement initiatives",
+                            "Assisted with daily operational coordination and planning",
+                            "Participated in process improvement projects for retail operations"
+                        ]
+                    }
+                ]
+            },
+            "Operations Manager": {
+                profile: "Strategic Operations Manager with 6+ years of experience optimizing business processes, managing multi-site operations, and leading teams of up to 15 members. Proven expertise in systems management, vendor relations, and operational efficiency improvements. Successfully managed server infrastructure for 5 companies and implemented process improvements that reduced operational costs by 30%.",
+                keySkills: [
+                    "Operations oversight, workflow management",
+                    "Staff supervision and coordination",
+                    "SLA management with clients and vendors",
+                    "Financial administration (payments, commissions, payroll)",
+                    "Strategic planning and project oversight"
+                ],
+                toolsAndSystems: [
+                    "1CRM",
+                    "Sonar (payments & accounts)",
+                    "Microsoft Office (Word, Excel, PowerPoint)",
+                    "Server Management Systems",
+                    "Huawei Billing System"
+                ],
+                skills: [
+                    "Operations Management & Process Optimization",
+                    "Team Leadership & Staff Development",
+                    "Vendor Relationship Management",
+                    "Systems Administration & IT Infrastructure",
+                    "Budget Management & Cost Control",
+                    "Quality Assurance & Compliance",
+                    "Strategic Planning & Implementation",
+                    "Customer Service Excellence",
+                    "Performance Monitoring & KPI Management",
+                    "Change Management & Process Improvement"
+                ],
+                experience: [
+                    {
+                        company: "KCE Consulting",
+                        position: "Payroll Administrator / Junior Bookkeeper",
+                        period: "Feb 2020 - Current",
+                        duties: [
+                            "Managed operations for payroll processing across multiple companies (690 employees)",
+                            "Oversaw daily operational workflows and process optimization initiatives",
+                            "Coordinated with management on operational efficiency and compliance",
+                            "Supervised administrative processes and quality control procedures",
+                            "Implemented operational improvements reducing processing time by 25%",
+                            "Managed vendor relationships and external service providers"
+                        ]
+                    },
+                    {
+                        company: "Elmarie Winter Consulting Services",
+                        position: "Payroll Administrator (Contract Work)",
+                        period: "Jan 2019 - Jan 2020",
+                        duties: [
+                            "Managed operational delivery for multiple contract clients",
+                            "Coordinated service level agreements and client expectations",
+                            "Oversaw operational procedures and quality standards",
+                            "Implemented process improvements for client service delivery",
+                            "Managed operational documentation and compliance requirements"
+                        ]
+                    },
+                    {
+                        company: "Initio Networx",
+                        position: "Operations Manager / Payroll Administrator",
+                        period: "Feb 2018 - Aug 2018",
+                        duties: [
+                            "Established ISP partnerships and negotiated service level agreements",
+                            "Created comprehensive company profiles and operational procedures",
+                            "Managed financial operations including payments and account oversight",
+                            "Supervised technical, pre-sales, and accounts support teams",
+                            "Handled commission structures, payroll, and expense management",
+                            "Developed customer service protocols and quality standards"
+                        ]
+                    },
+                    {
+                        company: "Initec Computer Hardware",
+                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
+                        period: "Aug 2016 - Feb 2018",
+                        duties: [
+                            "Managed client relationships and ensured service delivery excellence",
+                            "Supervised billing operations and financial processing",
+                            "Coordinated between technical teams and clients",
+                            "Implemented client communication protocols and feedback systems",
+                            "Managed operational KPIs and performance metrics",
+                            "Oversaw project operations and resource allocation"
+                        ]
+                    },
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Managed daily sales operations and customer service delivery",
+                            "Coordinated between sales, accounts, and stock control departments",
+                            "Implemented operational procedures for inventory management",
+                            "Supervised staff performance and operational workflows",
+                            "Optimized operational processes improving efficiency by 35%",
+                            "Managed vendor relationships and supplier coordination"
+                        ]
+                    },
+                    {
+                        company: "Net-King",
+                        position: "Team Leader, Machine Supervisor",
+                        period: "June 2013 - Mar 2015",
+                        duties: [
+                            "Managed production operations and manufacturing workflows",
+                            "Supervised team operations and ensured safety compliance",
+                            "Implemented operational improvements increasing productivity by 20%",
+                            "Coordinated with management on operational planning and resource needs",
+                            "Managed operational KPIs and performance monitoring",
+                            "Oversaw equipment maintenance and operational efficiency"
+                        ]
+                    },
+                    {
+                        company: "Birds For Africa",
+                        position: "Counter Sales & Stock Controller (Part time)",
+                        period: "Sep 2011 - May 2013",
+                        duties: [
+                            "Managed retail operations and customer service delivery",
+                            "Coordinated stock management and sales operations",
+                            "Implemented operational procedures for inventory control",
+                            "Supported daily operational coordination and planning",
+                            "Assisted with operational workflow optimization",
+                            "Maintained operational compliance with regulatory requirements"
+                        ]
+                    }
+                ]
+            },
+            "Accounts Administrator": {
+                profile: "Experienced Accounts Administrator with 7+ years in financial administration, accounts processing, and compliance management. Skilled in accounts payable/receivable, reconciliations, and financial reporting. Proficient in multiple accounting systems including Sage, Xero, and PSIBER. Strong track record in SARS compliance, VAT submissions, and supporting audit processes.",
+                keySkills: [
+                    "Accounts payable/receivable management",
+                    "Bank reconciliations",
+                    "Invoicing and payment tracking",
+                    "Financial reporting and documentation",
+                    "Attention to detail and record keeping"
+                ],
+                toolsAndSystems: [
+                    "Xero",
+                    "Sage One",
+                    "Sage Pastel Payroll",
+                    "Sonar (payment system)",
+                    "Microsoft Office Suite",
+                    "SARS eFiling System"
+                ],
+                skills: [
+                    "Accounts Payable & Receivable Management",
+                    "Financial Reconciliations & Analysis",
+                    "Invoice Processing & Payment Management",
+                    "SARS Compliance & Tax Submissions",
+                    "Financial Reporting & Documentation",
+                    "Audit Support & Documentation",
+                    "Excel Advanced Functions & Financial Modeling",
+                    "Customer Account Management",
+                    "Month-end & Year-end Procedures",
+                    "Payment Processing & Cash Flow Management"
+                ],
+                experience: [
+                    {
+                        company: "KCE Consulting",
+                        position: "Junior Bookkeeper / Accounts Administrator",
+                        period: "Feb 2020 - Current",
+                        duties: [
+                            "Managed accounts payable and receivable for multiple companies",
+                            "Processed invoices and payments with 100% accuracy",
+                            "Conducted monthly reconciliations for all accounts",
+                            "Prepared VAT returns and ensured SARS compliance",
+                            "Supported external audit processes with comprehensive documentation",
+                            "Maintained customer accounts and handled payment queries",
+                            "Prepared financial reports and assisted with budget analysis"
+                        ]
+                    },
+                    {
+                        company: "Initec Civils",
+                        position: "Accounts Assistant",
+                        period: "Aug 2018 - May 2019",
+                        duties: [
+                            "Captured and processed all receipts and payment transactions",
+                            "Maintained detailed accounts receivable and payable records",
+                            "Handled customer payment processing and account queries",
+                            "Assisted with month-end procedures and reconciliations",
+                            "Supported payroll processing and wage calculations"
+                        ]
+                    },
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Accounts Assistant & Sales Administrator",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Managed customer accounts and payment processing",
+                            "Handled sales documentation and invoice generation",
+                            "Maintained accurate records of all financial transactions",
+                            "Processed customer payments and managed payment terms",
+                            "Assisted with stock control and inventory valuation"
+                        ]
+                    }
+                ]
+            },
+            "Systems Administrator": {
+                profile: "Technical Systems Administrator with 4+ years of experience managing IT infrastructure, server maintenance, and system optimization. Successfully maintained 99.9% uptime for multi-company server environments and implemented system improvements that reduced downtime by 40%. Experienced in CRM systems, billing platforms, and technical support operations.",
+                keySkills: [
+                    "Server management and maintenance",
+                    "Internal systems management (1CRM)",
+                    "Troubleshooting technical issues",
+                    "Process automation and systems optimization"
+                ],
+                toolsAndSystems: [
+                    "1CRM System",
+                    "Huawei Billing System (ISDP & SCS)",
+                    "ESupplier System",
+                    "Sonar Billing System",
+                    "Server Management Tools",
+                    "Microsoft Office Suite"
+                ],
+                skills: [
+                    "Server Management & Maintenance",
+                    "System Administration & Configuration",
+                    "Network Infrastructure Management",
+                    "CRM Systems Administration (1CRM)",
+                    "Billing Systems Management (Huawei ISDP, SCS, ESupplier)",
+                    "System Monitoring & Performance Optimization",
+                    "Technical Troubleshooting & Problem Resolution",
+                    "Backup & Recovery Procedures",
+                    "Security Management & Compliance",
+                    "Technical Documentation & Training"
+                ],
+                experience: [
+                    {
+                        company: "Initec Civils",
+                        position: "Systems Manager",
+                        period: "Aug 2018 - May 2019",
+                        duties: [
+                            "Managed and maintained server infrastructure for 5 companies",
+                            "Ensured 1CRM system operated smoothly with 99.9% uptime",
+                            "Implemented system monitoring and automated backup procedures",
+                            "Performed regular system updates and security patches",
+                            "Provided technical support and system training to users",
+                            "Documented system procedures and created user manuals"
+                        ]
+                    },
+                    {
+                        company: "Initec Computer Hardware",
+                        position: "Billing Systems Manager",
+                        period: "Aug 2016 - Feb 2018",
+                        duties: [
+                            "Managed Huawei billing systems (ISDP & SCS) for telecommunications projects",
+                            "Processed invoicing through ESupplier system with zero errors",
+                            "Maintained system documentation and billing procedures",
+                            "Provided technical support for billing system users",
+                            "Implemented system improvements and efficiency enhancements"
+                        ]
+                    },
+                    {
+                        company: "Initio Networx",
+                        position: "Technical Support & Systems Administrator",
+                        period: "Feb 2018 - Aug 2018",
+                        duties: [
+                            "Provided technical and pre-sales support to clients",
+                            "Managed Sonar billing and customer management system",
+                            "Handled system administration for ISP operations",
+                            "Documented technical procedures and client solutions"
+                        ]
+                    }
+                ]
+            },
+            "Team Leader": {
+                profile: "Experienced Team Leader with 6+ years of successful team management across diverse industries. Proven ability to lead teams of up to 15 members, improve productivity by 25%, and maintain high employee satisfaction rates. Strong background in training, performance management, and implementing process improvements that drive operational excellence.",
+                keySkills: [
+                    "Staff supervision and mentoring",
+                    "Task allocation and workflow management",
+                    "Performance monitoring",
+                    "Problem-solving under pressure",
+                    "Stock and inventory control"
+                ],
+                toolsAndSystems: [
+                    "Microsoft Office Suite",
+                    "1CRM System",
+                    "Manufacturing Equipment",
+                    "Stock Control Systems",
+                    "Quality Management Tools"
+                ],
+                skills: [
+                    "Team Leadership & Management",
+                    "Staff Training & Development",
+                    "Performance Management & Coaching",
+                    "Workflow Optimization & Process Improvement",
+                    "Conflict Resolution & Problem Solving",
+                    "Goal Setting & Performance Monitoring",
+                    "Cross-functional Collaboration",
+                    "Quality Control & Assurance",
+                    "Safety Management & Compliance",
+                    "Communication & Interpersonal Skills"
+                ],
+                experience: [
+                    {
+                        company: "Net-King",
+                        position: "Team Leader & Machine Supervisor",
+                        period: "June 2013 - Mar 2015",
+                        duties: [
+                            "Led a team of 5 machinery operators in plastic welding operations",
+                            "Implemented safety procedures reducing workplace incidents by 100%",
+                            "Trained new team members on equipment operation and safety protocols",
+                            "Managed daily production schedules and quality control processes",
+                            "Achieved 98% production targets through effective team coordination",
+                            "Conducted regular team meetings and performance reviews"
+                        ]
+                    },
+                    {
+                        company: "Initec Computer Hardware",
+                        position: "Project Team Leader",
+                        period: "Aug 2016 - Feb 2018",
+                        duties: [
+                            "Led project teams for Huawei telecommunications installations",
+                            "Coordinated with site foremen and managed project documentation",
+                            "Ensured team compliance with project timelines and quality standards",
+                            "Provided leadership during complex technical implementations",
+                            "Mentored junior team members and facilitated knowledge transfer"
+                        ]
+                    },
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Sales Team Leader",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Led sales team in achieving monthly targets",
+                            "Trained staff on customer service excellence and sales techniques",
+                            "Managed stock control and inventory procedures",
+                            "Developed customer relationship strategies that improved retention by 30%",
+                            "Coordinated team schedules and performance monitoring"
+                        ]
+                    }
+                ]
+            },
+            "Stock Controller": {
+                profile: "Detail-oriented Stock Controller with 5+ years of experience in inventory management, stock control systems, and warehouse operations. Proven track record in maintaining 99.5% inventory accuracy, implementing efficient stock procedures, and reducing stock discrepancies by 35%. Experienced in various industries including automotive, manufacturing, and retail environments.",
+                keySkills: [
+                    "Inventory tracking and management",
+                    "Recording receipts and payments",
+                    "Reporting and reconciliation",
+                    "Attention to detail"
+                ],
+                toolsAndSystems: [
+                    "Stock Control Systems",
+                    "Microsoft Office Suite",
+                    "Inventory Management Software",
+                    "Point of Sale Systems",
+                    "Barcode Scanning Systems"
+                ],
+                skills: [
+                    "Inventory Management & Control",
+                    "Stock Taking & Cycle Counting",
+                    "Warehouse Operations & Organization",
+                    "Stock Control Systems & Software",
+                    "Purchase Order Management",
+                    "Supplier Relationship Management",
+                    "Stock Valuation & Reporting",
+                    "Loss Prevention & Stock Security",
+                    "Quality Control & Inspection",
+                    "Health & Safety Compliance"
+                ],
+                experience: [
+                    {
+                        company: "Bryanston Executive Cars",
+                        position: "Stock Controller & Sales Assistant",
+                        period: "April 2015 - July 2016",
+                        duties: [
+                            "Managed inventory for vehicle stock with 99.5% accuracy",
+                            "Conducted daily stock takes and maintained detailed records",
+                            "Implemented stock control procedures reducing discrepancies by 35%",
+                            "Coordinated with sales team on stock availability and customer requirements",
+                            "Managed vehicle documentation and compliance records",
+                            "Assisted customers with vehicle selection and information"
+                        ]
+                    },
+                    {
+                        company: "Net-King",
+                        position: "Stock Controller & Machine Supervisor",
+                        period: "June 2013 - Mar 2015",
+                        duties: [
+                            "Maintained stock control for manufacturing materials and equipment",
+                            "Managed raw material inventory and production scheduling",
+                            "Implemented inventory tracking system improving efficiency by 20%",
+                            "Conducted regular stock audits and reconciliations",
+                            "Coordinated with suppliers on delivery schedules and quality requirements"
+                        ]
+                    },
+                    {
+                        company: "Birds For Africa",
+                        position: "Stock Controller & Counter Sales",
+                        period: "Sep 2011 - May 2013",
+                        duties: [
+                            "Managed retail stock including live animals and pet supplies",
+                            "Maintained optimal stock levels through effective ordering procedures",
+                            "Conducted weekly stock takes and maintained inventory records",
+                            "Assisted customers with product selection and care information",
+                            "Ensured compliance with animal welfare and health regulations"
+                        ]
+                    }
+                ]
+            }
+        };
+
+        function renderJobTitles() {
+            const container = document.getElementById('jobTitles');
+            const categories = {};
+            
+            jobTitles.forEach(job => {
+                if (!categories[job.category]) {
+                    categories[job.category] = [];
+                }
+                categories[job.category].push(job);
+            });
+
+            let html = '';
+            Object.keys(categories).forEach(category => {
+                html += `
+                    <div class="mb-4">
+                        <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">${category}</h4>
+                        <div class="space-y-1">
+                `;
+                categories[category].forEach(job => {
+                    html += `
+                        <button onclick="generateCV('${job.title}')" 
+                                class="w-full text-left p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-primary hover:bg-primary/5 transition-all duration-200 group">
+                            <div class="flex items-center space-x-3">
+                                <i class="${job.icon} text-primary"></i>
+                                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-primary">${job.title}</span>
+                            </div>
+                        </button>
+                    `;
+                });
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function generateCV(jobTitle) {
+            const template = cvTemplates[jobTitle];
+            if (!template) return;
+
+            const cvContent = document.getElementById('cvContent');
+            
+            const html = `
+                <div class="fade-in">
+                    <!-- Header -->
+                    <div class="border-b border-gray-200 dark:border-gray-600 pb-6 mb-6">
+                        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Scott Angelos</h1>
+                        <h2 class="text-xl text-primary font-semibold mb-4">${jobTitle}</h2>
+                        <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Roodepoort, Gauteng, South Africa</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-phone"></i>
+                                <span>062 957 9503</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-envelope"></i>
+                                <span>s.d.angelos93@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Profile -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-user-circle text-primary mr-2"></i>
+                            Professional Profile
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${template.profile}</p>
+                    </div>
+
+                    <!-- Key Skills -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-key text-primary mr-2"></i>
+                            Key Skills
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            ${template.keySkills.map(skill => `
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-chevron-right text-primary text-sm"></i>
+                                    <span class="text-gray-700 dark:text-gray-300 text-sm font-medium">${skill}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Tools & Systems -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-tools text-primary mr-2"></i>
+                            Tools & Systems
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${template.toolsAndSystems.map(tool => `
+                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">${tool}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Additional Skills & Abilities -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-star text-primary mr-2"></i>
+                            Additional Skills & Abilities
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            ${template.skills.map(skill => `
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-check text-primary text-sm"></i>
+                                    <span class="text-gray-700 dark:text-gray-300 text-sm">${skill}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                            <i class="fas fa-briefcase text-primary mr-2"></i>
+                            Work Experience
+                        </h3>
+                        <div class="space-y-6">
+                            ${template.experience.map(exp => `
+                                <div class="border-l-2 border-primary pl-4">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                        <h4 class="font-semibold text-gray-900 dark:text-white">${exp.company}</h4>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">${exp.period}</span>
+                                    </div>
+                                    <p class="text-primary font-medium mb-2">${exp.position}</p>
+                                    <ul class="space-y-1">
+                                        ${exp.duties.map(duty => `
+                                            <li class="text-gray-700 dark:text-gray-300 text-sm flex items-start">
+                                                <i class="fas fa-chevron-right text-primary text-xs mt-1 mr-2 flex-shrink-0"></i>
+                                                <span>${duty}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Education & Certifications -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-graduation-cap text-primary mr-2"></i>
+                            Education & Certifications
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-2">
+                                <i class="fas fa-certificate text-primary mt-1"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Payroll Administrator Certification</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Sage Pastel Payroll & HR (Modules 1-3)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <i class="fas fa-certificate text-primary mt-1"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Certified Xero Advisor</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Xero Certification Program</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <i class="fas fa-book text-primary mt-1"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Bookkeeping Studies (Ongoing)</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Continuous Professional Development</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <i class="fas fa-graduation-cap text-primary mt-1"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Matriculation Certificate</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Radley Private School (2012)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-info-circle text-primary mr-2"></i>
+                            Additional Information
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white mb-1">Languages</p>
+                                <p class="text-gray-700 dark:text-gray-300">English (Fluent), Afrikaans (Conversational)</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white mb-1">Availability</p>
+                                <p class="text-gray-700 dark:text-gray-300">Immediate start available (1 month notice)</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white mb-1">Transport</p>
+                                <p class="text-gray-700 dark:text-gray-300">Own reliable transport</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white mb-1">Work Authorization</p>
+                                <p class="text-gray-700 dark:text-gray-300">South African Citizen</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- References -->
+                    <div class="border-t border-gray-200 dark:border-gray-600 pt-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <i class="fas fa-users text-primary mr-2"></i>
+                            Professional References
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                                <p class="font-medium text-gray-900 dark:text-white">John Atkinson</p>
+                                <p class="text-gray-600 dark:text-gray-400">Accounts Manager, KCE Consulting</p>
+                                <p class="text-gray-600 dark:text-gray-400">📞 082 582 2483</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                                <p class="font-medium text-gray-900 dark:text-white">Rebecca Isherwood</p>
+                                <p class="text-gray-600 dark:text-gray-400">Accounts Manager, Initec Group</p>
+                                <p class="text-gray-600 dark:text-gray-400">📞 067 848 1613</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+                            Additional references available upon request
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            cvContent.innerHTML = html;
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            renderJobTitles();
+        });
+    </script>
+</body>
+</html>
