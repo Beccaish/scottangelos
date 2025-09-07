@@ -110,6 +110,66 @@
                     <div class="space-y-2" id="jobTitles">
                         <!-- Job titles will be populated here -->
                     </div>
+                    
+                    <!-- Salary Information Section -->
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+                        <button onclick="toggleSalaryInfo()" class="w-full flex items-center justify-between text-left p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-money-bill-wave text-green-600"></i>
+                                <span class="text-sm font-medium text-gray-900 dark:text-white">Salary Information</span>
+                            </div>
+                            <i id="salaryChevron" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                        </button>
+                        
+                        <div id="salaryInfo" class="hidden mt-3 space-y-4 text-xs">
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white mb-2">Finance & Administration</h4>
+                                <div class="space-y-1 text-gray-600 dark:text-gray-400">
+                                    <div class="flex justify-between"><span>Senior Bookkeeper</span><span>R280k - R420k</span></div>
+                                    <div class="flex justify-between"><span>Sr. Accounts Admin</span><span>R320k - R450k</span></div>
+                                    <div class="flex justify-between"><span>Sr. Payroll Admin</span><span>R350k - R480k</span></div>
+                                    <div class="flex justify-between"><span>Financial Admin</span><span>R300k - R420k</span></div>
+                                    <div class="flex justify-between"><span>Payroll & HR Coord</span><span>R320k - R450k</span></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white mb-2">Management</h4>
+                                <div class="space-y-1 text-gray-600 dark:text-gray-400">
+                                    <div class="flex justify-between"><span>Project Manager</span><span>R450k - R650k</span></div>
+                                    <div class="flex justify-between"><span>Operations Manager</span><span>R500k - R750k</span></div>
+                                    <div class="flex justify-between"><span>Payroll Manager</span><span>R480k - R650k</span></div>
+                                    <div class="flex justify-between"><span>Accounts Supervisor</span><span>R380k - R520k</span></div>
+                                    <div class="flex justify-between"><span>Department Manager</span><span>R550k - R800k</span></div>
+                                    <div class="flex justify-between"><span>Team Leader</span><span>R280k - R400k</span></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white mb-2">IT & Technology</h4>
+                                <div class="space-y-1 text-gray-600 dark:text-gray-400">
+                                    <div class="flex justify-between"><span>HRIS Specialist</span><span>R420k - R580k</span></div>
+                                    <div class="flex justify-between"><span>Payroll Sys Admin</span><span>R380k - R550k</span></div>
+                                    <div class="flex justify-between"><span>IT Systems Coord</span><span>R350k - R500k</span></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white mb-2">Operations</h4>
+                                <div class="space-y-1 text-gray-600 dark:text-gray-400">
+                                    <div class="flex justify-between"><span>Inventory Supervisor</span><span>R300k - R450k</span></div>
+                                    <div class="flex justify-between"><span>Operations Coord</span><span>R320k - R480k</span></div>
+                                    <div class="flex justify-between"><span>Inventory Manager</span><span>R450k - R650k</span></div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-2 border-t border-gray-200 dark:border-gray-600">
+                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                    <strong>Note:</strong> Salaries vary by company size, location, and experience. Packages may include benefits worth 15-25% additional value.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1328,6 +1388,19 @@
             // If we're in edit mode, make content editable
             if (isEditMode) {
                 makeContentEditable();
+            }
+        }
+
+        function toggleSalaryInfo() {
+            const salaryInfo = document.getElementById('salaryInfo');
+            const chevron = document.getElementById('salaryChevron');
+            
+            if (salaryInfo.classList.contains('hidden')) {
+                salaryInfo.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                salaryInfo.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
             }
         }
 
