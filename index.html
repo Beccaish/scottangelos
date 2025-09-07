@@ -222,134 +222,114 @@
             }
         ];
 
-        const cvTemplates = {
-            "Payroll Administrator": {
-                profile: "Experienced Payroll Administrator with over 7 years of comprehensive payroll management across multiple industries. Skilled in processing payroll for large staff complements (up to 690 employees), ensuring full compliance with SARS requirements, and managing EMP submissions. Proficient in Sage Pastel Payroll, Sage One, Xero, and PSIBER systems. Known for accuracy, confidentiality, and ability to meet strict deadlines while supporting HR functions.",
-                keySkills: [
-                    "Payroll processing for multiple companies (690 employees)",
-                    "EMP201 & EMP501 submissions",
-                    "PAYE calculations",
-                    "Employee records management (new hires, terminations, pay changes)",
-                    "Legislative compliance in payroll",
-                    "Payroll reconciliations"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel Payroll & HR",
-                    "Xero Payroll",
-                    "Sage One Accounting",
-                    "PSIBER",
-                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
-                    "SARS eFiling System",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "Database Management (Access, SQL basics)",
-                    "Project Management Software (MS Project, Asana)"
-                ],
-                skills: [
-                    "End-to-End Payroll Processing (monthly & bi-weekly)",
-                    "SARS eFiling & Compliance (EMP201 & EMP501)",
-                    "HR Records Management (onboarding, terminations, pay adjustments)",
-                    "Payroll Reconciliations & Reporting",
-                    "Legislative Updates & Compliance Monitoring",
-                    "Employee Queries & Support",
-                    "Tax Calculations & PAYE Management",
-                    "Confidentiality & Data Protection (POPIA Compliance)",
-                    "Multi-company Payroll Management",
-                    "Advanced Excel (Pivot Tables, VLOOKUP, Macros)",
-                    "Business Process Analysis & Workflow Optimization",
-                    "Quality Management & ISO Standards Awareness",
-                    "Labour Relations Act Knowledge",
-                    "Basic Health & Safety Compliance"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Processed payroll for 690 employees across multiple companies, maintaining 100% accuracy",
-                            "Submitted monthly EMP201s and bi-annual/annual EMP501s via SARS eFiling with zero late submissions",
-                            "Managed employee records including onboarding, pay adjustments, and terminations",
-                            "Implemented payroll procedure improvements, reducing processing time by 25%",
-                            "Ensured full compliance with legislative requirements and implemented system updates",
-                            "Performed payroll reconciliations and prepared comprehensive management reports",
-                            "Handled employee payroll queries and provided exceptional customer service"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Delivered payroll administration for multiple clients with 100% accuracy",
-                            "Processed new hires, pay changes, and terminations efficiently",
-                            "Developed and documented payroll procedures, improving efficiency by 20%",
-                            "Prepared and distributed pay slips and comprehensive payroll reports",
-                            "Maintained strict confidentiality and data protection standards"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Managed dual role of operations and payroll administration",
-                            "Processed payroll for technical staff including complex commission structures",
-                            "Handled fuel reimbursements and expense management",
-                            "Maintained employee records and processed airtime allowances",
-                            "Calculated and processed commission payments and performance bonuses"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Supervised payroll data collection from site teams and project managers",
-                            "Processed wage calculations for technical teams and project staff",
-                            "Managed employee documentation for Huawei project assignments",
-                            "Coordinated payroll schedules with project timelines and deliverables",
-                            "Handled payroll queries and employee benefit calculations"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Processed bi-weekly wage calculations and commission payments",
-                            "Maintained employee records and handled basic HR administration",
-                            "Calculated sales commissions and performance incentives",
-                            "Assisted with employee queries regarding pay and benefits",
-                            "Supported month-end payroll procedures and reporting"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Managed timekeeping and attendance records for production team",
-                            "Calculated overtime payments and shift differentials",
-                            "Coordinated payroll data with production schedules",
-                            "Handled basic employee relations and grievance procedures",
-                            "Supported HR functions including leave management and documentation"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Maintained employee time records and basic payroll data",
-                            "Assisted with commission calculations for sales staff",
-                            "Handled cash management and daily sales reconciliations",
-                            "Supported basic HR administrative functions",
-                            "Maintained accurate records of staff schedules and hours worked"
-                        ]
-                    }
+        // Standard truthful experience that will be used for ALL templates
+        const standardExperience = [
+            {
+                company: "KCE Consulting",
+                position: "Payroll Administrator / Junior Bookkeeper",
+                period: "Feb 2020 - Current",
+                duties: [
+                    "Processing multiple companies Payroll, including updating employee numbers, hours. Employee count: 690",
+                    "Dealing with legislative changes",
+                    "Working out PAYE manually",
+                    "Record, maintain and update payroll procedures",
+                    "Updating employee details and pulling reports and handing it to my manager",
+                    "Submitting EMP201's before the 7th of the month and setting payment date on efiling",
+                    "Maintain employee records for new hires, pay changes and terminations",
+                    "Experience working with PSIBER",
+                    "Preparing and submitting the bi-annual and annual EMP501",
+                    "Processing of bills and receipts on Receipt Bank, and Sage online",
+                    "Xero, Pastel, Sage processing to TB",
+                    "Debtors and Creditor Recons done on a monthly basis",
+                    "Management accounts",
+                    "Payroll Reconciliations",
+                    "Fixed Assets Register Reconciliations",
+                    "VAT Reconciliations",
+                    "VAT201 Submissions"
                 ]
             },
+            {
+                company: "Elmarie Winter Consulting Services",
+                position: "Payroll Administrator (Contract Work)",
+                period: "Jan 2019 - Jan 2020",
+                duties: [
+                    "Processing payroll, including updating employee numbers, hours",
+                    "Record, maintain and update payroll procedures",
+                    "Maintain employee records for new hires, pay changes and terminations"
+                ]
+            },
+            {
+                company: "Initec Civils",
+                position: "Contracts Manager, Systems manager and Project Manager (Retrenched)",
+                period: "Aug 2018 - May 2019",
+                duties: [
+                    "Bringing in, Controlling, Creating PO's of approved sub-contractors",
+                    "Making sure the internal 1CRM system is running smoothly all the time",
+                    "Ensuring internal client plans are done in time and handed in for approval, following approval time",
+                    "Controlling and maintaining the server (which ran 5 companies)"
+                ]
+            },
+            {
+                company: "Initio Networx",
+                position: "Operations Manager / Payroll Administrator",
+                period: "Feb 2018 - Aug 2018",
+                duties: [
+                    "Finding ISP's to resell for and signing SLA's",
+                    "Creating company profile",
+                    "Controlling payments going in and out the company bank account",
+                    "Capturing all payments onto Sonar",
+                    "Accounts, Technical and Pre-Sales Support",
+                    "Administration",
+                    "Airtime payments",
+                    "Commission, payroll and fuel refunds"
+                ]
+            },
+            {
+                company: "Initec Computer Hardware",
+                position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
+                period: "Aug 2016 - Feb 2018",
+                duties: [
+                    "Ensuring that all documents were received from site foremen to assist with site billing",
+                    "Authorization to sign documents after being thoroughly checked by myself",
+                    "Uploading onto the Huawei billing system (ISDP & SCS)",
+                    "Invoicing on the Huawei billing system (ESupplier)"
+                ]
+            },
+            {
+                company: "Bryanston Executive Cars",
+                position: "Second hand car sales, Accounts Assistant, Stock Controller",
+                period: "April 2015 - July 2016",
+                duties: [
+                    "Capturing of receipts",
+                    "Capturing of payments",
+                    "Bi-weekly wages",
+                    "Stock controlling of on site cars",
+                    "Sales"
+                ]
+            },
+            {
+                company: "Net-King",
+                position: "Team Leader, Machine Supervisor",
+                period: "June 2013 - Mar 2015",
+                duties: [
+                    "Machinery operator to weld plastic materials together",
+                    "Ran a team of two",
+                    "Stock control"
+                ]
+            },
+            {
+                company: "Birds For Africa",
+                position: "Counter Sales & Stock Controller (Part time)",
+                period: "Sep 2011 - May 2013",
+                duties: [
+                    "Counter sales",
+                    "Assisting customers",
+                    "Stock controlling"
+                ]
+            }
+        ];
+
+        const cvTemplates = {
             "Senior Bookkeeper": {
                 profile: "Senior Bookkeeper with 5+ years of comprehensive experience in advanced bookkeeping, financial management, and team leadership. Expert in full-cycle bookkeeping across multiple companies with proven track record in complex reconciliations, financial reporting, and audit coordination. Advanced Xero Certified Advisor with deep expertise in cloud-based accounting systems and process optimization. Ready to lead bookkeeping teams and drive financial excellence.",
                 keySkills: [
@@ -388,150 +368,7 @@
                     "Digital Document Management & Automation Leadership",
                     "Senior Client Relationship Management & Strategic Communication"
                 ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Senior Bookkeeper / Financial Administrator",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Led advanced bookkeeping operations processing complex bills and receipts through Receipt Bank and Sage Online systems",
-                            "Prepared comprehensive trial balances for multiple companies using Xero, Pastel, and Sage with advanced financial analysis",
-                            "Conducted senior-level monthly debtors and creditors reconciliations with 100% accuracy across multiple entities",
-                            "Prepared detailed management accounts and executive-level financial reports for strategic decision-making",
-                            "Led complex VAT reconciliations and managed advanced VAT201 submissions ensuring compliance across all entities",
-                            "Maintained comprehensive Fixed Assets Register and conducted advanced reconciliations across multiple companies",
-                            "Led month-end and year-end closing procedures with senior oversight and quality control",
-                            "Coordinated with external auditors providing comprehensive documentation and audit leadership"
-                        ]
-                    }
-                ]
-            },
-            "Bookkeeper": {
-                profile: "Detail-oriented Bookkeeper with 5+ years of experience in full-cycle bookkeeping, accounts reconciliation, and financial reporting. Certified Xero Advisor with expertise in Sage, Pastel, and cloud-based accounting systems. Proven track record in VAT submissions, management accounts preparation, and maintaining accurate financial records for multiple entities. Strong analytical skills with commitment to accuracy and compliance.",
-                keySkills: [
-                    "Recording, reconciling, and maintaining financial transactions",
-                    "Debtors and creditors reconciliations",
-                    "Fixed assets register and VAT reconciliations",
-                    "Management accounts preparation",
-                    "Receipt and bill processing"
-                ],
-                toolsAndSystems: [
-                    "Xero (Certified Advisor)",
-                    "Sage One Accounting",
-                    "Receipt Bank & Document Management",
-                    "Sage Pastel Payroll",
-                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
-                    "SARS eFiling System",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "Database Management (Access, SQL basics)",
-                    "Financial Reporting Software"
-                ],
-                skills: [
-                    "Full-Cycle Bookkeeping (Accounts Payable/Receivable)",
-                    "Financial Reconciliations (Bank, Debtors, Creditors)",
-                    "VAT Submissions & Reconciliations (VAT201)",
-                    "Management Accounts Preparation",
-                    "Fixed Assets Register Management",
-                    "Trial Balance Preparation",
-                    "Financial Reporting & Analysis",
-                    "SARS Compliance & Tax Submissions (POPIA Compliant)",
-                    "Advanced Excel (Pivot Tables, VLOOKUP, Financial Modeling)",
-                    "Business Process Analysis & Workflow Optimization",
-                    "Quality Management & Audit Support",
-                    "Cloud-based Accounting Systems Management",
-                    "Digital Document Management & Automation",
-                    "Client Relationship Management & Communication"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Processed bills and receipts through Receipt Bank and Sage Online systems",
-                            "Prepared trial balances for multiple companies using Xero, Pastel, and Sage",
-                            "Conducted monthly debtors and creditors reconciliations with 100% accuracy",
-                            "Prepared comprehensive management accounts and financial reports",
-                            "Performed VAT reconciliations and submitted VAT201 returns on time",
-                            "Maintained Fixed Assets Register and conducted regular reconciliations",
-                            "Supported month-end and year-end closing procedures",
-                            "Liaised with external auditors and provided required documentation"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Maintained financial records and accounting entries for contract clients",
-                            "Processed accounts payable and receivable transactions",
-                            "Assisted with bookkeeping and financial reconciliations",
-                            "Supported month-end procedures and financial reporting",
-                            "Maintained accurate documentation for audit purposes"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Managed accounts payable and receivable for ISP operations",
-                            "Processed financial transactions and maintained accurate records",
-                            "Handled commission calculations and financial reconciliations",
-                            "Maintained detailed records of payments and accounts",
-                            "Supported financial operations and reporting requirements"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Managed project billing and financial documentation",
-                            "Processed invoicing through specialized billing systems",
-                            "Maintained accurate financial records for telecommunications projects",
-                            "Handled accounts receivable and client billing processes",
-                            "Supported financial reporting and project accounting"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Managed accounts receivable and payment processing",
-                            "Maintained detailed stock records and conducted regular stock takes",
-                            "Processed sales transactions and prepared daily reports",
-                            "Assisted with customer account management and queries",
-                            "Handled cash management and financial reconciliations"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Maintained production cost records and inventory valuations",
-                            "Assisted with financial documentation for manufacturing operations",
-                            "Supported cost accounting and production reporting",
-                            "Handled basic bookkeeping functions for department operations",
-                            "Maintained accurate records of materials and labor costs"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Processed daily sales transactions and cash reconciliations",
-                            "Maintained inventory records and stock valuations",
-                            "Assisted with basic bookkeeping and financial record keeping",
-                            "Handled cash management and daily sales reporting",
-                            "Supported month-end stock takes and inventory reconciliations"
-                        ]
-                    }
-                ]
+                experience: standardExperience
             },
             "Project Manager": {
                 profile: "Results-driven Project Manager with 5+ years of experience managing complex projects across IT, construction, and telecommunications sectors. Proven track record in leading cross-functional teams, managing budgets up to R5M, and delivering projects on time and within scope. Experienced in client relationship management, vendor coordination, and implementing process improvements that increase efficiency by up to 30%.",
@@ -570,94 +407,7 @@
                     "Contract Management & Compliance",
                     "Strategic Planning & Implementation"
                 ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed project aspects of payroll implementation across multiple companies",
-                            "Led process improvement initiatives reducing payroll processing time by 25%",
-                            "Coordinated with external auditors and managed compliance projects",
-                            "Implemented new systems and procedures across different business units",
-                            "Managed stakeholder communication and project reporting for management",
-                            "Oversaw documentation and quality control for all payroll processes"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Managed contract-based projects for multiple client implementations",
-                            "Coordinated project timelines and deliverables for payroll setups",
-                            "Led client onboarding projects and system implementations",
-                            "Managed project documentation and compliance requirements",
-                            "Coordinated with stakeholders to ensure project success"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Managed operational projects including ISP partnership implementations",
-                            "Led system integration projects and process development initiatives",
-                            "Coordinated cross-functional teams for service delivery projects",
-                            "Managed project budgets and resource allocation",
-                            "Oversaw quality assurance and project completion milestones"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Led Huawei telecommunications projects from initiation to completion",
-                            "Coordinated with site foremen and ensured proper project documentation",
-                            "Managed project billing through Huawei systems (ISDP & SCS)",
-                            "Processed invoicing via ESupplier system with 100% accuracy",
-                            "Authorized project documentation after thorough quality checks",
-                            "Maintained project schedules and delivered within agreed timeframes"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Managed inventory optimization projects improving stock accuracy by 35%",
-                            "Led sales process improvement initiatives",
-                            "Coordinated between sales and operations teams",
-                            "Managed customer relationship projects and service improvements",
-                            "Oversaw daily operations and process coordination"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Led production teams of up to 5 members in manufacturing projects",
-                            "Supervised machinery operations and ensured safety compliance",
-                            "Managed project timelines and quality control processes",
-                            "Implemented workflow improvements that increased productivity by 20%",
-                            "Coordinated with management on project progress and resource needs"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Managed small-scale inventory optimization projects",
-                            "Coordinated stock management and sales operations",
-                            "Supported customer service improvement initiatives",
-                            "Assisted with daily operational coordination and planning",
-                            "Participated in process improvement projects for retail operations"
-                        ]
-                    }
-                ]
+                experience: standardExperience
             },
             "Operations Manager": {
                 profile: "Strategic Operations Manager with 6+ years of experience optimizing business processes, managing multi-site operations, and leading teams of up to 15 members. Proven expertise in systems management, vendor relations, and operational efficiency improvements. Successfully managed server infrastructure for 5 companies and implemented process improvements that reduced operational costs by 30%.",
@@ -696,1432 +446,7 @@
                     "Multi-site Operations Coordination",
                     "Risk Management & Business Continuity"
                 ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed operations for payroll processing across multiple companies (690 employees)",
-                            "Oversaw daily operational workflows and process optimization initiatives",
-                            "Coordinated with management on operational efficiency and compliance",
-                            "Supervised administrative processes and quality control procedures",
-                            "Implemented operational improvements reducing processing time by 25%",
-                            "Managed vendor relationships and external service providers"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Managed operational delivery for multiple contract clients",
-                            "Coordinated service level agreements and client expectations",
-                            "Oversaw operational procedures and quality standards",
-                            "Implemented process improvements for client service delivery",
-                            "Managed operational documentation and compliance requirements"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Established ISP partnerships and negotiated service level agreements",
-                            "Created comprehensive company profiles and operational procedures",
-                            "Managed financial operations including payments and account oversight",
-                            "Supervised technical, pre-sales, and accounts support teams",
-                            "Handled commission structures, payroll, and expense management",
-                            "Developed customer service protocols and quality standards"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Managed client relationships and ensured service delivery excellence",
-                            "Supervised billing operations and financial processing",
-                            "Coordinated between technical teams and clients",
-                            "Implemented client communication protocols and feedback systems",
-                            "Managed operational KPIs and performance metrics",
-                            "Oversaw project operations and resource allocation"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Managed daily sales operations and customer service delivery",
-                            "Coordinated between sales, accounts, and stock control departments",
-                            "Implemented operational procedures for inventory management",
-                            "Supervised staff performance and operational workflows",
-                            "Optimized operational processes improving efficiency by 35%",
-                            "Managed vendor relationships and supplier coordination"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Managed production operations and manufacturing workflows",
-                            "Supervised team operations and ensured safety compliance",
-                            "Implemented operational improvements increasing productivity by 20%",
-                            "Coordinated with management on operational planning and resource needs",
-                            "Managed operational KPIs and performance monitoring",
-                            "Oversaw equipment maintenance and operational efficiency"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Managed retail operations and customer service delivery",
-                            "Coordinated stock management and sales operations",
-                            "Implemented operational procedures for inventory control",
-                            "Supported daily operational coordination and planning",
-                            "Assisted with operational workflow optimization",
-                            "Maintained operational compliance with regulatory requirements"
-                        ]
-                    }
-                ]
-            },
-            "Accounts Administrator": {
-                profile: "Experienced Accounts Administrator with 7+ years in financial administration, accounts processing, and compliance management. Skilled in accounts payable/receivable, reconciliations, and financial reporting. Proficient in multiple accounting systems including Sage, Xero, and PSIBER. Strong track record in SARS compliance, VAT submissions, and supporting audit processes.",
-                keySkills: [
-                    "Accounts payable/receivable management",
-                    "Bank reconciliations",
-                    "Invoicing and payment tracking",
-                    "Financial reporting and documentation",
-                    "Attention to detail and record keeping"
-                ],
-                toolsAndSystems: [
-                    "Xero Accounting",
-                    "Sage One Accounting",
-                    "Sage Pastel Payroll",
-                    "Sonar (payment system)",
-                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
-                    "SARS eFiling System",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "Database Management (Access, SQL basics)",
-                    "Financial Reporting & Document Management Software"
-                ],
-                skills: [
-                    "Accounts Payable & Receivable Management",
-                    "Financial Reconciliations & Analysis",
-                    "Invoice Processing & Payment Management (100% accuracy)",
-                    "SARS Compliance & Tax Submissions (POPIA Compliant)",
-                    "Financial Reporting & Documentation",
-                    "Audit Support & Documentation",
-                    "Advanced Excel (Pivot Tables, VLOOKUP, Financial Modeling)",
-                    "Customer Account Management & Relations",
-                    "Month-end & Year-end Procedures",
-                    "Digital Document Management & Cloud Platforms",
-                    "Business Process Analysis & Workflow Optimization",
-                    "Quality Management & Compliance Standards",
-                    "Client Communication & Stakeholder Management",
-                    "Database Management & Data Analysis"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed accounts payable and receivable for multiple companies",
-                            "Processed invoices and payments with 100% accuracy",
-                            "Conducted monthly reconciliations for all accounts",
-                            "Prepared VAT returns and ensured SARS compliance",
-                            "Supported external audit processes with comprehensive documentation",
-                            "Maintained customer accounts and handled payment queries",
-                            "Prepared financial reports and assisted with budget analysis"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Maintained accounts and financial records for contract clients",
-                            "Processed client invoicing and payment administration",
-                            "Handled accounts receivable and payment tracking",
-                            "Assisted with financial documentation and record keeping",
-                            "Supported compliance and audit documentation requirements"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Managed accounts payable and receivable for ISP operations",
-                            "Processed financial transactions and payment administration",
-                            "Handled commission calculations and financial reconciliations",
-                            "Maintained detailed accounts and payment records",
-                            "Supported financial operations and administrative reporting"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Managed client billing and accounts receivable processes",
-                            "Processed invoicing through specialized billing systems",
-                            "Maintained accurate financial records for telecommunications projects",
-                            "Handled accounts administration and client billing processes",
-                            "Supported financial reporting and accounts management"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Managed customer accounts and payment processing",
-                            "Handled sales documentation and invoice generation",
-                            "Maintained accurate records of all financial transactions",
-                            "Processed customer payments and managed payment terms",
-                            "Assisted with stock control and inventory valuation"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Maintained financial records and cost accounting for production",
-                            "Assisted with accounts administration for manufacturing operations",
-                            "Supported financial documentation and record keeping",
-                            "Handled basic accounts functions for department operations",
-                            "Maintained accurate records of operational costs and expenses"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Processed daily sales transactions and payment administration",
-                            "Maintained customer accounts and payment records",
-                            "Handled cash management and daily financial reconciliations",
-                            "Assisted with basic accounts administration and record keeping",
-                            "Supported financial operations and payment processing"
-                        ]
-                    }
-                ]
-            },
-            "Systems Administrator": {
-                profile: "Technical Systems Administrator with 4+ years of experience managing IT infrastructure, server maintenance, and system optimization. Successfully maintained 99.9% uptime for multi-company server environments and implemented system improvements that reduced downtime by 40%. Experienced in CRM systems, billing platforms, and technical support operations.",
-                keySkills: [
-                    "Server management and maintenance",
-                    "Internal systems management (1CRM)",
-                    "Troubleshooting technical issues",
-                    "Process automation and systems optimization"
-                ],
-                toolsAndSystems: [
-                    "1CRM System & CRM Administration",
-                    "Huawei Billing System (ISDP & SCS)",
-                    "ESupplier System",
-                    "Sonar Billing System",
-                    "Server Management Tools & Infrastructure",
-                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "Database Management (Access, SQL basics)",
-                    "System Monitoring & Performance Tools"
-                ],
-                skills: [
-                    "Server Management & Maintenance (99.9% uptime achievement)",
-                    "System Administration & Configuration",
-                    "Network Infrastructure Management",
-                    "CRM Systems Administration (1CRM)",
-                    "Billing Systems Management (Huawei ISDP, SCS, ESupplier)",
-                    "System Monitoring & Performance Optimization (40% downtime reduction)",
-                    "Technical Troubleshooting & Problem Resolution",
-                    "Backup & Recovery Procedures",
-                    "Security Management & Compliance (POPIA Compliant)",
-                    "Advanced Excel & Database Management",
-                    "Cloud Platform Administration & Migration",
-                    "User Support & Technical Training",
-                    "Process Automation & System Integration",
-                    "Digital Communication & Remote Support"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Maintained and optimized payroll systems for multiple companies (690 employees)",
-                            "Managed system configurations and data integrity across Sage, Xero, and PSIBER",
-                            "Implemented system improvements reducing processing time by 25%",
-                            "Provided technical support for system users and troubleshooting",
-                            "Maintained system documentation and user procedures",
-                            "Ensured system security and compliance with data protection requirements"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Managed systems integration for multiple client implementations",
-                            "Configured and maintained payroll systems for various client environments",
-                            "Provided technical support and system training to client users",
-                            "Documented system procedures and best practices",
-                            "Ensured system reliability and data integrity across client platforms"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Provided technical and pre-sales support to clients",
-                            "Managed Sonar billing and customer management system",
-                            "Handled system administration for ISP operations",
-                            "Documented technical procedures and client solutions",
-                            "Maintained system performance and reliability standards"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Managed Huawei billing systems (ISDP & SCS) for telecommunications projects",
-                            "Processed invoicing through ESupplier system with zero errors",
-                            "Maintained system documentation and billing procedures",
-                            "Provided technical support for billing system users",
-                            "Implemented system improvements and efficiency enhancements",
-                            "Ensured system security and data integrity"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Maintained and optimized inventory management systems",
-                            "Provided technical support for sales and stock control systems",
-                            "Ensured system reliability and data accuracy",
-                            "Documented system procedures and user guidelines",
-                            "Implemented system improvements for operational efficiency"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Managed production systems and equipment operations",
-                            "Maintained system performance and reliability standards",
-                            "Provided technical support for manufacturing systems",
-                            "Documented system procedures and operational guidelines",
-                            "Implemented system improvements increasing productivity by 20%"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Maintained point-of-sale systems and inventory management",
-                            "Provided basic technical support for retail systems",
-                            "Ensured system reliability and data accuracy",
-                            "Assisted with system troubleshooting and problem resolution",
-                            "Supported system operations and daily maintenance tasks"
-                        ]
-                    }
-                ]
-            },
-            "ERP Administrator": {
-                profile: "Entry-level ERP Administrator with 4+ years of hands-on experience in business software systems including Sage Pastel, Xero, and PSIBER. Strong background in system configuration, user support, and process optimization gained through payroll and accounting software management. Proven ability to implement system improvements, manage data integrity, and support users across multiple business units. Eager to transition technical skills into comprehensive ERP administration role.",
-                keySkills: [
-                    "ERP system configuration and maintenance (Sage, Xero, PSIBER)",
-                    "User account management and system access control",
-                    "Business process analysis and workflow optimization",
-                    "System integration and data migration",
-                    "End-user training and technical support",
-                    "System documentation and procedure development"
-                ],
-                toolsAndSystems: [
-                    "Sage Pastel (Payroll & Accounting modules)",
-                    "Xero Accounting System",
-                    "PSIBER System",
-                    "Microsoft Office Suite (Advanced Excel, Access)",
-                    "Database Management (SQL basics)",
-                    "1CRM System",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "System Monitoring Tools",
-                    "Document Management Systems"
-                ],
-                skills: [
-                    "ERP System Administration (Sage Pastel, Xero, PSIBER)",
-                    "System Configuration & User Management",
-                    "Business Process Automation & Optimization",
-                    "Data Management & System Integration",
-                    "User Training & Technical Support",
-                    "System Documentation & Procedure Development",
-                    "Software Implementation & Change Management",
-                    "Advanced Excel & Database Management",
-                    "Quality Assurance & System Testing",
-                    "Problem Resolution & Troubleshooting",
-                    "Compliance Management & System Security",
-                    "Report Generation & Data Analysis",
-                    "Cross-functional Collaboration",
-                    "Project Coordination & Task Management"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Administered Sage Pastel Payroll system for 690 employees across multiple companies",
-                            "Configured and maintained Xero accounting systems with 100% data accuracy",
-                            "Managed PSIBER system implementation and user access controls",
-                            "Implemented system improvements reducing processing time by 25%",
-                            "Provided technical support and training to end users across different business units",
-                            "Maintained system documentation and developed standard operating procedures",
-                            "Ensured data integrity and system security compliance across all platforms"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Managed system implementations for multiple client ERP environments",
-                            "Configured payroll and accounting systems for various client requirements",
-                            "Provided system training and ongoing technical support to client users",
-                            "Developed system procedures and user documentation for client operations",
-                            "Ensured successful system migrations and data integrity across platforms"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Managed Sonar billing system and CRM platform for ISP operations",
-                            "Configured system workflows and automated business processes",
-                            "Provided technical support for billing and customer management systems",
-                            "Developed system integration procedures for operational efficiency",
-                            "Maintained system performance and reliability standards"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Huawei Billing Manager / Project Controller",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Administered Huawei billing systems (ISDP & SCS) for telecommunications projects",
-                            "Managed ESupplier system configuration and user access",
-                            "Developed system procedures and maintained billing system documentation",
-                            "Provided technical support for system users and resolved system issues",
-                            "Ensured system compliance and data accuracy across all platforms"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Accounts Assistant / Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Managed inventory management systems and point-of-sale platforms",
-                            "Configured system settings for sales and stock control operations",
-                            "Provided user support for sales and accounting software",
-                            "Maintained system reliability and data accuracy",
-                            "Developed procedures for system operation and maintenance"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader / Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Supervised production systems and equipment management software",
-                            "Maintained system performance and operational standards",
-                            "Provided basic technical support for manufacturing systems",
-                            "Documented system procedures and operational guidelines",
-                            "Coordinated system maintenance and performance monitoring"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Operated point-of-sale systems and inventory management software",
-                            "Maintained system reliability and data accuracy for retail operations",
-                            "Provided basic user support for system operations",
-                            "Assisted with system troubleshooting and problem resolution",
-                            "Maintained accurate system records and operational data"
-                        ]
-                    }
-                ]
-            },
-            "Payroll Systems Administrator": {
-                profile: "Experienced Payroll Administrator with 7+ years of extensive hands-on experience using payroll systems, seeking to transition into specialized payroll systems administration role. Deep practical knowledge of Sage Pastel Payroll, Xero, and PSIBER systems gained through daily operation and management of payroll for 690+ employees. Strong understanding of system functionality, user needs, and process optimization opportunities gained through years of front-line system usage.",
-                keySkills: [
-                    "Payroll system administration and configuration",
-                    "SARS eFiling system integration and compliance",
-                    "User account management and system security",
-                    "Payroll process automation and optimization",
-                    "System backup, recovery, and maintenance procedures",
-                    "Integration with HR and accounting systems"
-                ],
-                toolsAndSystems: [
-                    "Sage Pastel Payroll & HR (Expert level)",
-                    "Xero Payroll System",
-                    "PSIBER Payroll Platform",
-                    "SARS eFiling System",
-                    "Microsoft Office Suite (Advanced Excel, Access)",
-                    "Database Management (SQL)",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "System Monitoring & Performance Tools",
-                    "Backup & Recovery Solutions"
-                ],
-                skills: [
-                    "Extensive Hands-on Experience with Payroll Systems (Sage, Xero, PSIBER)",
-                    "Understanding of System Configuration from User Perspective",
-                    "User Support & Training from End-User Experience",
-                    "SARS Compliance & System Integration (operational knowledge)",
-                    "Database Record Management & Data Integrity",
-                    "System Documentation & Procedure Development",
-                    "Process Optimization from Front-line Experience",
-                    "Technical Problem Recognition & Issue Identification",
-                    "Change Management & System Update Implementation",
-                    "Advanced Excel & Database Analysis (Pivot Tables, VLOOKUP, Macros)",
-                    "Security Awareness & Compliance (POPIA knowledge)",
-                    "System Monitoring from User Operations Perspective",
-                    "Multi-company System Operations Experience",
-                    "Legislative Compliance from Payroll Administration Experience"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Administered payroll systems for 690 employees across multiple companies with 100% accuracy",
-                            "Managed Sage Pastel Payroll system configuration and user access controls",
-                            "Maintained Xero payroll integration and automated processing workflows",
-                            "Implemented system improvements reducing payroll processing time by 25%",
-                            "Configured SARS eFiling integration for automated EMP201 and EMP501 submissions",
-                            "Provided technical support and system training to payroll users",
-                            "Maintained system security and ensured POPIA compliance across all platforms"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Managed payroll system implementations for multiple client environments",
-                            "Configured payroll systems and established automated processing procedures",
-                            "Provided system administration and ongoing technical support to clients",
-                            "Developed system documentation and user training materials",
-                            "Ensured system reliability and data integrity across client platforms"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Administered payroll systems for technical staff including complex commission structures",
-                            "Configured system workflows for automated payroll processing",
-                            "Managed system integration with billing and HR platforms",
-                            "Provided technical support for payroll system users",
-                            "Maintained system performance and data accuracy standards"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Huawei Billing Manager / Project Controller",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Supervised payroll system administration for project-based employees",
-                            "Managed system configuration for complex wage calculations",
-                            "Coordinated payroll system integration with project management platforms",
-                            "Provided system support for payroll processing and reporting",
-                            "Maintained system documentation and operational procedures"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Accounts Assistant / Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Administered payroll system for sales staff including commission calculations",
-                            "Managed system configuration for bi-weekly payroll processing",
-                            "Provided system support for employee self-service functions",
-                            "Maintained system accuracy and data integrity for payroll operations",
-                            "Developed system procedures for payroll administration"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader / Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Supervised payroll data collection and system input procedures",
-                            "Managed timekeeping system integration with payroll processing",
-                            "Provided support for payroll system operations and maintenance",
-                            "Maintained system accuracy for production team payroll calculations",
-                            "Coordinated system procedures with HR and finance departments"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Supported basic payroll system operations and data entry",
-                            "Maintained accurate timekeeping records in payroll systems",
-                            "Assisted with payroll system operations and employee data management",
-                            "Provided support for payroll processing and system maintenance",
-                            "Maintained system records and employee information accuracy"
-                        ]
-                    }
-                ]
-            },
-            "IT Admin": {
-                profile: "Entry-level IT Administrator with 4+ years of practical experience in business systems administration, technical support, and process optimization. Strong foundation in software platforms including Sage, Xero, and Microsoft Office Suite with hands-on experience in system maintenance and user support. Proven ability to troubleshoot technical issues, implement system improvements, and provide excellent end-user support across multiple business environments.",
-                keySkills: [
-                    "Software administration and technical support",
-                    "System troubleshooting and problem resolution",
-                    "User account management and access control",
-                    "Business software configuration and maintenance",
-                    "End-user training and support documentation",
-                    "Basic network and cloud platform administration"
-                ],
-                toolsAndSystems: [
-                    "Microsoft Office Suite (Expert level - Excel, Word, PowerPoint, Access)",
-                    "Office 365 & Cloud Platform Administration",
-                    "Sage Pastel Software Suite",
-                    "Xero Cloud Accounting Platform",
-                    "Teams, Zoom & Communication Platforms",
-                    "Database Management (Access, SQL basics)",
-                    "1CRM & Customer Management Systems",
-                    "Windows Operating Systems",
-                    "System Monitoring & Performance Tools",
-                    "Document Management & Cloud Storage"
-                ],
-                skills: [
-                    "IT Administration & Technical Support",
-                    "Software Installation & Configuration",
-                    "User Account Management & Access Control",
-                    "System Troubleshooting & Problem Resolution",
-                    "End-User Training & Support Documentation",
-                    "Microsoft Office Suite Administration (Expert level)",
-                    "Cloud Platform Management (Office 365)",
-                    "Database Administration & Management",
-                    "System Monitoring & Performance Optimization",
-                    "Network Connectivity & Basic Administration",
-                    "Security Management & Compliance",
-                    "System Backup & Data Recovery",
-                    "Process Documentation & Procedure Development",
-                    "Digital Communication & Remote Support"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Provided technical support for Sage Pastel and Xero software across multiple companies",
-                            "Administered Office 365 platforms and managed user accounts for 690 employees",
-                            "Troubleshot software issues and provided end-user support for business applications",
-                            "Implemented system improvements that reduced processing time by 25%",
-                            "Maintained system documentation and developed user training materials",
-                            "Ensured system security and data protection compliance across all platforms",
-                            "Managed cloud-based document systems and digital workflow processes"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Provided IT support for multiple client software implementations",
-                            "Configured business software and managed user setup for client environments",
-                            "Delivered technical training and ongoing support to client users",
-                            "Developed system procedures and troubleshooting documentation",
-                            "Ensured system reliability and optimal performance across client platforms"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Provided technical and pre-sales support for ISP software systems",
-                            "Administered Sonar billing system and customer management platform",
-                            "Managed system configuration and user access for operational software",
-                            "Documented technical procedures and provided client technical support",
-                            "Maintained system performance and reliability for business operations"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Huawei Billing Manager / Project Controller",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Administered Huawei billing systems and ESupplier platform",
-                            "Provided technical support for specialized telecommunications software",
-                            "Managed system configuration and maintained billing system documentation",
-                            "Resolved technical issues and provided user support for system operations",
-                            "Ensured system security and maintained data integrity across platforms"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Accounts Assistant / Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Provided technical support for sales and inventory management systems",
-                            "Maintained point-of-sale systems and ensured operational reliability",
-                            "Troubleshot software issues and provided user training for staff",
-                            "Documented system procedures and maintained user guidelines",
-                            "Ensured system accuracy and data integrity for business operations"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader / Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Supervised technical systems and provided basic IT support for production equipment",
-                            "Maintained system performance and operational standards",
-                            "Provided technical troubleshooting for manufacturing systems",
-                            "Documented system procedures and operational guidelines",
-                            "Coordinated system maintenance and performance monitoring"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Provided basic IT support for retail point-of-sale systems",
-                            "Maintained system reliability and assisted with technical troubleshooting",
-                            "Ensured system accuracy and data integrity for retail operations",
-                            "Assisted with system maintenance and basic technical support tasks",
-                            "Documented system procedures for operational consistency"
-                        ]
-                    }
-                ]
-            },
-            "Senior Payroll Administrator": {
-                profile: "Senior Payroll Administrator with 7+ years of comprehensive experience managing large-scale payroll operations for up to 690 employees across multiple companies. Proven track record in ensuring 100% compliance with SARS requirements, implementing process improvements that reduce processing time by 25%, and leading payroll system implementations. Ready to advance to senior-level positions with increased responsibility for team leadership and strategic payroll management.",
-                keySkills: [
-                    "Large-scale payroll processing (690+ employees across multiple companies)",
-                    "Advanced EMP201 & EMP501 submissions and compliance management",
-                    "Payroll system optimization and process improvement leadership",
-                    "Multi-company payroll coordination and management",
-                    "Senior-level legislative compliance and regulatory updates",
-                    "Team mentoring and junior staff development"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel Payroll & HR (Expert level)",
-                    "Xero Payroll (Advanced configuration)",
-                    "Sage One Accounting",
-                    "PSIBER (Multi-company setup)",
-                    "Microsoft Office Suite (Expert Excel, PowerBI)",
-                    "SARS eFiling System (Advanced submissions)",
-                    "Office 365 & Advanced Cloud Platforms",
-                    "Teams, Zoom & Leadership Communication Tools",
-                    "Advanced Database Management (SQL)",
-                    "Project Management Software (MS Project, Asana)"
-                ],
-                skills: [
-                    "Senior Payroll Management (100% accuracy, 690+ employees)",
-                    "Advanced SARS Compliance & Legislative Management",
-                    "Payroll Process Leadership & Optimization (25% efficiency gains)",
-                    "Multi-company Payroll Coordination & Strategy",
-                    "Team Leadership & Staff Development",
-                    "Senior-level HR Records Management & Compliance",
-                    "Advanced Payroll Reconciliations & Management Reporting",
-                    "Strategic Process Improvement & Change Management",
-                    "Confidentiality & Data Protection Leadership (POPIA Compliance)",
-                    "Advanced Excel & Analytics (Pivot Tables, VLOOKUP, Macros, PowerBI)",
-                    "Business Process Analysis & Workflow Strategy",
-                    "Quality Management & ISO Standards Implementation",
-                    "Labour Relations Act Expertise & Policy Development",
-                    "Health & Safety Compliance Leadership"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Senior Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Led payroll operations for 690 employees across multiple companies, achieving 100% accuracy and zero compliance issues",
-                            "Spearheaded monthly EMP201 and bi-annual/annual EMP501 submissions with advanced SARS eFiling expertise",
-                            "Implemented strategic payroll procedure improvements, reducing processing time by 25% and enhancing efficiency",
-                            "Managed complex employee records including onboarding, terminations, and pay adjustments across multiple entities",
-                            "Led compliance initiatives ensuring full adherence to legislative requirements and system updates",
-                            "Developed comprehensive management reports and payroll analytics for senior leadership",
-                            "Mentored junior staff and provided expert-level guidance on complex payroll queries"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Senior Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Delivered expert payroll administration for multiple high-profile clients with 100% accuracy",
-                            "Led complex payroll implementations including new hires, system changes, and terminations",
-                            "Developed and documented advanced payroll procedures, improving client efficiency by 20%",
-                            "Prepared comprehensive pay slips and detailed payroll reports for client management",
-                            "Maintained highest standards of confidentiality and data protection across all client operations"
-                        ]
-                    }
-                ]
-            },
-            "Payroll Manager": {
-                profile: "Experienced Payroll Manager with 7+ years of progressive leadership in payroll operations, currently managing payroll for 690+ employees across multiple companies. Proven expertise in strategic payroll management, team leadership, process optimization, and ensuring 100% compliance with SARS requirements. Ready to lead payroll departments and drive organizational payroll strategy with a track record of implementing improvements that reduce processing time by 25%.",
-                keySkills: [
-                    "Payroll department leadership and team management",
-                    "Strategic payroll planning and multi-company coordination",
-                    "Advanced compliance management and regulatory oversight",
-                    "Payroll process optimization and technology leadership",
-                    "Budget management and cost control for payroll operations",
-                    "Stakeholder management and cross-functional collaboration"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel Payroll & HR (Expert level)",
-                    "Xero Payroll (Advanced management)",
-                    "Sage One Accounting",
-                    "PSIBER (Enterprise configuration)",
-                    "Microsoft Office Suite (Expert Excel, PowerBI, Project)",
-                    "SARS eFiling System (Expert submissions)",
-                    "Office 365 & Enterprise Cloud Platforms",
-                    "Teams, Zoom & Leadership Communication Tools",
-                    "Advanced Database Management (SQL, Access)",
-                    "Project Management Software (MS Project, Asana, Monday.com)"
-                ],
-                skills: [
-                    "Payroll Department Leadership & Team Management",
-                    "Strategic Payroll Planning & Multi-company Operations (690+ employees)",
-                    "Advanced SARS Compliance & Legislative Leadership",
-                    "Process Optimization & Technology Implementation (25% efficiency gains)",
-                    "Budget Management & Cost Control for Payroll Operations",
-                    "Stakeholder Management & Executive Reporting",
-                    "Change Management & Organizational Development",
-                    "Risk Management & Compliance Oversight",
-                    "Performance Management & Team Development",
-                    "Advanced Excel & Analytics (PowerBI, Dashboard Creation)",
-                    "Strategic Business Process Analysis & Workflow Design",
-                    "Quality Management & Audit Leadership",
-                    "Labour Relations & Policy Development",
-                    "Project Management & Implementation Leadership"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Manager / Senior Administrator",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed comprehensive payroll operations for 690 employees across multiple companies, ensuring 100% accuracy and compliance",
-                            "Led strategic implementation of payroll improvements, reducing processing time by 25% and enhancing operational efficiency",
-                            "Directed monthly EMP201 and bi-annual/annual EMP501 submissions with expert SARS eFiling management",
-                            "Oversaw complex multi-company employee records management including onboarding, terminations, and compensation adjustments",
-                            "Implemented comprehensive compliance frameworks ensuring adherence to all legislative requirements",
-                            "Developed executive-level management reports and payroll analytics for senior leadership decision-making",
-                            "Led cross-functional teams and provided strategic guidance on payroll-related organizational initiatives"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Senior Payroll Manager (Contract)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Provided strategic payroll management for multiple high-value client organizations",
-                            "Led complex payroll transformation projects including system implementations and process improvements",
-                            "Developed comprehensive payroll strategies that improved client operational efficiency by 20%",
-                            "Managed senior-level client relationships and provided executive-level payroll consulting",
-                            "Established industry-leading standards for confidentiality and data protection across all operations"
-                        ]
-                    }
-                ]
-            },
-            "Financial Administrator": {
-                profile: "Senior Financial Administrator with 7+ years of comprehensive experience in financial operations, bookkeeping, and compliance management. Expert in Sage and Xero systems with proven track record in managing accounts for multiple companies, VAT submissions, and financial reporting. Ready to advance to senior financial administration roles with increased responsibility for financial strategy and team leadership.",
-                keySkills: [
-                    "Senior-level financial administration and strategic oversight",
-                    "Multi-company financial operations and reporting",
-                    "Advanced VAT compliance and SARS submissions",
-                    "Financial process improvement and system optimization",
-                    "Team leadership and financial staff development",
-                    "Management reporting and financial analysis"
-                ],
-                toolsAndSystems: [
-                    "Xero (Certified Advisor - Expert level)",
-                    "Sage One Accounting (Advanced)",
-                    "Receipt Bank & Advanced Document Management",
-                    "Sage Pastel Payroll Integration",
-                    "Microsoft Office Suite (Expert Excel, PowerBI)",
-                    "SARS eFiling System (Advanced)",
-                    "Office 365 & Enterprise Cloud Platforms",
-                    "Teams, Zoom & Leadership Communication Tools",
-                    "Advanced Database Management (Access, SQL)",
-                    "Financial Reporting Software (PowerBI, Tableau)"
-                ],
-                skills: [
-                    "Senior Financial Administration & Strategic Management",
-                    "Multi-company Financial Operations & Coordination",
-                    "Advanced Bookkeeping & Financial Reconciliations",
-                    "VAT Management & Advanced SARS Compliance",
-                    "Financial Process Leadership & Optimization",
-                    "Management Accounts Preparation & Analysis",
-                    "Financial Reporting & Executive Dashboard Creation",
-                    "Audit Coordination & Compliance Management",
-                    "Advanced Excel & Financial Modeling (PowerBI)",
-                    "Business Process Analysis & Financial Workflow Design",
-                    "Quality Management & Financial Controls Implementation",
-                    "Cloud-based Financial Systems Leadership",
-                    "Digital Document Management & Automation",
-                    "Client Relationship Management & Stakeholder Communication"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Senior Financial Administrator",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Led financial administration for multiple companies with advanced Receipt Bank and Sage Online systems management",
-                            "Prepared comprehensive trial balances and financial reports using Xero, Pastel, and Sage across multiple entities",
-                            "Conducted advanced monthly debtors and creditors reconciliations with 100% accuracy across all companies",
-                            "Prepared detailed management accounts and executive-level financial reports for senior leadership",
-                            "Led VAT reconciliations and managed complex VAT201 submissions ensuring compliance across all entities",
-                            "Managed Fixed Assets Register and conducted comprehensive reconciliations across multiple companies",
-                            "Coordinated month-end and year-end closing procedures for multiple entities",
-                            "Led coordination with external auditors and provided comprehensive documentation for audit processes"
-                        ]
-                    }
-                ]
-            },
-            "Accounts Supervisor": {
-                profile: "Experienced Accounts Supervisor with 7+ years of comprehensive financial administration and proven leadership capabilities. Expert in managing accounts operations across multiple companies with strong background in team supervision, process improvement, and ensuring 100% accuracy in financial operations. Ready to lead accounts teams and drive financial excellence through strategic oversight and staff development.",
-                keySkills: [
-                    "Accounts team leadership and supervision",
-                    "Multi-company accounts management and coordination",
-                    "Financial process oversight and improvement",
-                    "Staff training and development in accounts procedures",
-                    "Quality control and accuracy management",
-                    "Stakeholder management and reporting"
-                ],
-                toolsAndSystems: [
-                    "Xero Accounting (Expert supervision)",
-                    "Sage One Accounting (Advanced management)",
-                    "Sage Pastel Payroll Integration",
-                    "Sonar (payment system management)",
-                    "Microsoft Office Suite (Expert Excel, PowerBI)",
-                    "SARS eFiling System (Advanced)",
-                    "Office 365 & Enterprise Cloud Platforms",
-                    "Teams, Zoom & Leadership Communication Tools",
-                    "Advanced Database Management (Access, SQL)",
-                    "Financial Reporting & Document Management Software"
-                ],
-                skills: [
-                    "Accounts Team Leadership & Supervision",
-                    "Multi-company Accounts Management & Coordination",
-                    "Advanced Financial Reconciliations & Analysis",
-                    "Invoice Processing & Payment Management Leadership (100% accuracy)",
-                    "SARS Compliance & Tax Submissions Oversight",
-                    "Financial Reporting & Team Performance Management",
-                    "Audit Support & Documentation Leadership",
-                    "Advanced Excel & Financial Analysis (PowerBI, Pivot Tables)",
-                    "Customer Account Management & Relations Oversight",
-                    "Month-end & Year-end Procedures Leadership",
-                    "Digital Document Management & Process Automation",
-                    "Business Process Analysis & Workflow Optimization",
-                    "Quality Management & Compliance Standards Implementation",
-                    "Client Communication & Stakeholder Management"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Accounts Supervisor",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Supervised comprehensive accounts operations for multiple companies, ensuring 100% accuracy and compliance",
-                            "Led accounts payable and receivable management across multiple entities with advanced process oversight",
-                            "Supervised monthly reconciliations for all accounts with comprehensive quality control procedures",
-                            "Oversaw VAT return preparation and SARS compliance across multiple companies",
-                            "Led coordination with external audit processes providing comprehensive documentation and team support",
-                            "Supervised customer account management and payment query resolution across all entities",
-                            "Prepared executive-level financial reports and assisted with strategic budget analysis",
-                            "Mentored junior accounts staff and implemented training programs for continuous improvement"
-                        ]
-                    }
-                ]
-            },
-            "Payroll & HR Coordinator": {
-                profile: "Experienced Payroll & HR Coordinator with 7+ years of integrated payroll and human resources management. Expert in coordinating payroll operations for 690+ employees while supporting HR functions including onboarding, terminations, and employee records management. Proven ability to bridge payroll and HR operations, ensuring seamless employee lifecycle management and compliance.",
-                keySkills: [
-                    "Integrated payroll and HR operations coordination",
-                    "Employee lifecycle management (onboarding to termination)",
-                    "HR records management and compliance",
-                    "Payroll-HR system integration and optimization",
-                    "Employee relations and query resolution",
-                    "Compliance management across payroll and HR functions"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel Payroll & HR (Expert integration)",
-                    "Xero Payroll with HR integration",
-                    "PSIBER (HR module management)",
-                    "Microsoft Office Suite (Expert Excel, HR analytics)",
-                    "SARS eFiling System (Employee compliance)",
-                    "Office 365 & HR Cloud Platforms",
-                    "Teams, Zoom & HR Communication Tools",
-                    "Database Management (Employee records, SQL)",
-                    "HR Information Systems (HRIS basics)",
-                    "Document Management & HR Compliance Systems"
-                ],
-                skills: [
-                    "Integrated Payroll & HR Coordination (690+ employees)",
-                    "Employee Lifecycle Management (Onboarding to Termination)",
-                    "HR Records Management & Compliance",
-                    "Payroll-HR System Integration & Optimization",
-                    "Employee Relations & Query Resolution",
-                    "SARS Compliance & Employee Tax Management",
-                    "HR Policy Implementation & Compliance Monitoring",
-                    "Advanced Excel & HR Analytics",
-                    "Confidentiality & Data Protection (POPIA Compliance)",
-                    "Multi-company HR Operations Coordination",
-                    "Business Process Analysis & HR Workflow Optimization",
-                    "Labour Relations Act Knowledge & Implementation",
-                    "Health & Safety Compliance in HR Operations",
-                    "Change Management & HR System Implementation"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll & HR Coordinator",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Coordinated integrated payroll and HR operations for 690 employees across multiple companies",
-                            "Managed comprehensive employee lifecycle from onboarding through termination with payroll integration",
-                            "Coordinated employee records management ensuring seamless payroll and HR data accuracy",
-                            "Implemented integrated processes reducing employee onboarding time by 25% while maintaining compliance",
-                            "Managed employee queries spanning both payroll and HR functions with expert resolution",
-                            "Coordinated SARS compliance ensuring proper employee tax management and documentation",
-                            "Supported HR functions including leave management, performance documentation, and policy implementation"
-                        ]
-                    }
-                ]
-            },
-            "HRIS Specialist": {
-                profile: "Experienced Payroll Administrator with 7+ years of hands-on experience using HR and payroll technology systems, seeking to transition into HRIS specialist role. Extensive practical knowledge of Sage Pastel HR, Xero, and PSIBER systems gained through managing payroll for 690+ employees. Strong foundation in system operation, user support, and identifying opportunities for HR technology optimization through daily hands-on experience.",
-                keySkills: [
-                    "HRIS system administration and configuration",
-                    "HR-Payroll system integration and optimization",
-                    "Employee data management and analytics",
-                    "System implementation and user training",
-                    "HR compliance and reporting through technology",
-                    "Process automation and workflow optimization"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel HR & Payroll (Expert HRIS configuration)",
-                    "Xero (HR integration and analytics)",
-                    "PSIBER (Advanced HR module management)",
-                    "Microsoft Office Suite (Expert Excel, PowerBI, Access)",
-                    "SARS eFiling System (HR compliance integration)",
-                    "Office 365 & Advanced Cloud HR Platforms",
-                    "Teams, Zoom & HR Technology Communication",
-                    "Advanced Database Management (SQL, Access, HR analytics)",
-                    "HR Information Systems (HRIS administration)",
-                    "Document Management & HR Technology Systems"
-                ],
-                skills: [
-                    "Hands-on Experience with HR & Payroll Systems (Sage, Xero, PSIBER)",
-                    "System User Support & Training from End-User Perspective",
-                    "Employee Data Management & Accuracy (690+ employees)",
-                    "Understanding of System Functionality & User Needs",
-                    "HR Compliance & Technology-driven Reporting (from user perspective)",
-                    "Process Optimization & Workflow Analysis (from operational experience)",
-                    "Advanced Excel & Data Analysis (Pivot Tables, VLOOKUP, Macros)",
-                    "Database Record Management & Data Integrity",
-                    "System Security & Data Protection (POPIA Compliance)",
-                    "Multi-company System Operations Experience",
-                    "Problem Identification & System Issue Recognition",
-                    "Change Management & System Update Implementation",
-                    "Report Generation & Data Analysis using business systems",
-                    "Cross-functional Collaboration & Stakeholder Communication"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "HRIS Specialist",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Administered HRIS for 690 employees across multiple companies ensuring optimal system performance",
-                            "Configured and maintained integrated HR-Payroll systems with 100% data accuracy",
-                            "Implemented system improvements reducing HR processing time by 25% through automation",
-                            "Provided expert technical support and training to HR users across different business units",
-                            "Maintained comprehensive system documentation and developed HR technology procedures",
-                            "Ensured system security and POPIA compliance across all HR technology platforms",
-                            "Generated HR analytics and reports for strategic decision-making and compliance"
-                        ]
-                    }
-                ]
-            },
-            "Department Manager": {
-                profile: "Experienced Department Manager with 7+ years of progressive leadership managing finance and administration operations. Proven track record in leading teams, optimizing processes, and ensuring 100% accuracy across department operations. Expert in managing payroll for 690+ employees while overseeing comprehensive departmental strategy, budget management, and cross-functional collaboration.",
-                keySkills: [
-                    "Departmental leadership and strategic management",
-                    "Team development and performance management",
-                    "Budget management and cost control",
-                    "Process optimization and operational efficiency",
-                    "Cross-functional collaboration and stakeholder management",
-                    "Strategic planning and implementation"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel (Enterprise management)",
-                    "Xero (Departmental oversight)",
-                    "Microsoft Office Suite (Expert Excel, PowerBI, Project)",
-                    "SARS eFiling System (Departmental compliance)",
-                    "Office 365 & Enterprise Management Platforms",
-                    "Teams, Zoom & Leadership Communication Tools",
-                    "Advanced Database Management (SQL, Analytics)",
-                    "Project Management Software (MS Project, Asana)",
-                    "Performance Management & KPI Tools",
-                    "Budget & Financial Planning Software"
-                ],
-                skills: [
-                    "Department Leadership & Strategic Management",
-                    "Team Development & Performance Management (690+ employee operations)",
-                    "Budget Management & Cost Control",
-                    "Process Optimization & Operational Excellence (25% efficiency gains)",
-                    "Strategic Planning & Implementation",
-                    "Cross-functional Collaboration & Stakeholder Management",
-                    "Change Management & Organizational Development",
-                    "Quality Management & Compliance Oversight",
-                    "Performance Monitoring & KPI Development",
-                    "Advanced Excel & Business Analytics (PowerBI)",
-                    "Digital Communication & Remote Team Management",
-                    "Risk Management & Business Continuity",
-                    "Policy Development & Implementation",
-                    "Executive Reporting & Decision Support"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Department Manager - Finance & Administration",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed comprehensive finance and administration department overseeing operations for 690+ employees",
-                            "Led strategic department initiatives reducing processing time by 25% and improving operational efficiency",
-                            "Directed budget management and cost control initiatives for departmental operations",
-                            "Oversaw cross-functional collaboration ensuring seamless integration with other departments",
-                            "Implemented performance management systems and KPI development for department excellence",
-                            "Led team development initiatives and performance coaching for department staff",
-                            "Provided executive-level reporting and strategic recommendations to senior leadership"
-                        ]
-                    }
-                ]
-            },
-            "IT Systems Coordinator": {
-                profile: "Experienced Payroll Administrator with 7+ years of hands-on experience using finance and business technology systems, seeking to transition into IT Systems Coordinator role. Extensive practical knowledge of Sage, Xero, and PSIBER systems gained through daily operation for 690+ employees. Strong understanding of user needs, system functionality, and opportunities for technology coordination gained through years of front-line system experience.",
-                keySkills: [
-                    "Finance-focused IT systems coordination",
-                    "System integration and optimization",
-                    "User support and training coordination",
-                    "Technology project coordination",
-                    "System security and compliance management",
-                    "Cross-functional IT collaboration"
-                ],
-                toolsAndSystems: [
-                    "SAGE Pastel (Advanced IT coordination)",
-                    "Xero (System administration)",
-                    "PSIBER (IT configuration and support)",
-                    "Microsoft Office Suite (Expert Excel, PowerBI, Access)",
-                    "Office 365 & Advanced Cloud Platform Coordination",
-                    "Teams, Zoom & IT Communication Tools",
-                    "Advanced Database Management (SQL, Access)",
-                    "System Monitoring & Performance Tools",
-                    "IT Security & Compliance Tools",
-                    "Project Management Software (MS Project, IT tools)"
-                ],
-                skills: [
-                    "Hands-on Experience with Finance IT Systems (Sage, Xero, PSIBER)",
-                    "Understanding of System Integration from User Perspective (690+ user environment)",
-                    "User Support & Training from End-User Experience",
-                    "Technology Problem Recognition & Issue Identification",
-                    "System Security Awareness & Compliance (POPIA knowledge)",
-                    "Advanced Excel & Data Analysis (Pivot Tables, VLOOKUP, Macros)",
-                    "Database Record Management & Data Coordination",
-                    "Cloud Platform Operations Experience (Office 365)",
-                    "Technical Problem Identification & Resolution Coordination",
-                    "Cross-functional Collaboration & Communication",
-                    "System Documentation & Procedure Development from User Perspective",
-                    "Change Management & System Update Implementation",
-                    "Performance Monitoring from Operations Perspective",
-                    "Stakeholder Communication & Business System Knowledge"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "IT Systems Coordinator - Finance Focus",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Coordinated IT systems for 690+ employees with focus on finance and payroll technology",
-                            "Managed system integration and optimization reducing processing time by 25%",
-                            "Coordinated user support and training for Sage, Xero, and PSIBER systems",
-                            "Implemented IT security measures ensuring POPIA compliance across all systems",
-                            "Coordinated technology projects and system implementations across multiple companies",
-                            "Provided technical documentation and procedure development for finance systems",
-                            "Managed cross-functional IT coordination ensuring seamless technology operations"
-                        ]
-                    }
-                ]
-            },
-            "Inventory Supervisor": {
-                profile: "Experienced Inventory Supervisor with 7+ years of comprehensive inventory management and team leadership. Proven track record in maintaining 99.5% inventory accuracy, implementing efficient procedures, and reducing stock discrepancies by 35%. Ready to lead inventory teams while leveraging payroll management experience for comprehensive warehouse operations.",
-                keySkills: [
-                    "Inventory team leadership and supervision",
-                    "Multi-location inventory coordination",
-                    "Stock control process optimization",
-                    "Team training and development",
-                    "Quality control and accuracy management",
-                    "Vendor relationship management and coordination"
-                ],
-                toolsAndSystems: [
-                    "Advanced Stock Control Systems & Inventory Management",
-                    "Microsoft Office Suite (Expert Excel, Analytics)",
-                    "Inventory Management Software (Supervisor level)",
-                    "Point of Sale Systems (Management)",
-                    "Barcode Scanning Systems (Advanced)",
-                    "Office 365 & Cloud Inventory Platforms",
-                    "Teams, Zoom & Leadership Communication Tools",
-                    "Advanced Database Management (Access, SQL)",
-                    "Supplier Management & Procurement Systems",
-                    "Quality Control & Inspection Management Tools"
-                ],
-                skills: [
-                    "Inventory Team Leadership & Supervision",
-                    "Multi-location Inventory Management & Coordination",
-                    "Stock Control Process Optimization (99.5% accuracy achievement)",
-                    "Team Training & Development in Inventory Procedures",
-                    "Warehouse Operations & Organization Leadership",
-                    "Supplier Relationship Management & Coordination",
-                    "Stock Valuation & Reporting Oversight",
-                    "Loss Prevention & Stock Security Management (35% discrepancy reduction)",
-                    "Quality Control & Inspection Leadership",
-                    "Advanced Excel & Inventory Analytics",
-                    "Digital Document Management & Cloud Platforms",
-                    "Business Process Analysis & Workflow Optimization",
-                    "Health & Safety Compliance Leadership",
-                    "Cross-functional Collaboration & Stakeholder Management"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Inventory Supervisor",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Supervised inventory management across multiple companies coordinating supplies and documentation",
-                            "Led implementation of advanced stock control procedures improving accuracy by 99.5%",
-                            "Managed team training and development for inventory management procedures",
-                            "Coordinated with suppliers maintaining optimal stock levels across all locations",
-                            "Implemented quality control measures ensuring organization and efficiency of all inventory",
-                            "Led regular inventory audits and reconciliation procedures across multiple entities"
-                        ]
-                    }
-                ]
-            },
-            "Operations Coordinator": {
-                profile: "Strategic Operations Coordinator with 7+ years of comprehensive operations management experience. Expert in coordinating multi-company operations, managing teams, and optimizing processes that reduce operational costs by 30%. Proven ability to coordinate between payroll, inventory, and operational functions ensuring seamless business operations.",
-                keySkills: [
-                    "Multi-company operations coordination",
-                    "Cross-functional team coordination",
-                    "Process optimization and efficiency improvement",
-                    "Vendor and supplier coordination",
-                    "Quality control and compliance coordination",
-                    "Strategic planning and implementation support"
-                ],
-                toolsAndSystems: [
-                    "Microsoft Office Suite (Expert Excel, PowerBI, Project)",
-                    "Operations Management Software",
-                    "Office 365 & Enterprise Cloud Platforms",
-                    "Teams, Zoom & Operations Communication Tools",
-                    "Advanced Database Management (SQL, Analytics)",
-                    "Project Management Software (MS Project, Asana)",
-                    "KPI Dashboard & Performance Monitoring Tools",
-                    "Inventory Management Integration",
-                    "Quality Management Systems",
-                    "Vendor Management & Procurement Systems"
-                ],
-                skills: [
-                    "Multi-company Operations Coordination",
-                    "Cross-functional Team Coordination & Leadership",
-                    "Process Optimization & Efficiency Improvement (30% cost reduction)",
-                    "Vendor Relationship Management & Coordination",
-                    "Quality Control & Compliance Coordination",
-                    "Strategic Planning & Implementation Support",
-                    "Performance Monitoring & KPI Coordination",
-                    "Advanced Excel & Operations Analytics (PowerBI)",
-                    "Digital Communication & Remote Operations Management",
-                    "Change Management & Organizational Coordination",
-                    "Risk Management & Business Continuity",
-                    "Cross-functional Collaboration & Stakeholder Management",
-                    "Policy Implementation & Compliance Coordination",
-                    "Executive Reporting & Operations Support"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Operations Coordinator",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Coordinated comprehensive operations across multiple companies managing 690+ employee operations",
-                            "Led operational process improvements reducing costs by 30% through strategic coordination",
-                            "Coordinated cross-functional teams ensuring seamless integration between departments",
-                            "Managed vendor relationships and supplier coordination for optimal operational efficiency",
-                            "Implemented quality control measures and compliance coordination across all operations",
-                            "Provided strategic planning support and implementation coordination for operational initiatives"
-                        ]
-                    }
-                ]
-            },
-            "Team Leader": {
-                profile: "Experienced Team Leader with 6+ years of successful team management across diverse industries. Proven ability to lead teams of up to 15 members, improve productivity by 25%, and maintain high employee satisfaction rates. Strong background in training, performance management, and implementing process improvements that drive operational excellence.",
-                keySkills: [
-                    "Staff supervision and mentoring",
-                    "Task allocation and workflow management",
-                    "Performance monitoring",
-                    "Problem-solving under pressure",
-                    "Stock and inventory control"
-                ],
-                toolsAndSystems: [
-                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
-                    "1CRM System & Team Management",
-                    "Manufacturing Equipment & Production Systems",
-                    "Stock Control Systems",
-                    "Quality Management Tools",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "Database Management (Access, SQL basics)",
-                    "Performance Monitoring & KPI Tools",
-                    "Project Management Software (MS Project, Asana)"
-                ],
-                skills: [
-                    "Team Leadership & Management (up to 15 members)",
-                    "Staff Training & Development",
-                    "Performance Management & Coaching",
-                    "Workflow Optimization & Process Improvement (25% productivity gains)",
-                    "Conflict Resolution & Problem Solving",
-                    "Goal Setting & Performance Monitoring",
-                    "Cross-functional Collaboration",
-                    "Quality Control & Assurance",
-                    "Safety Management & Compliance (100% incident reduction)",
-                    "Advanced Excel & Data Analysis",
-                    "Digital Communication & Remote Team Management",
-                    "Employee Engagement & Motivation Strategies",
-                    "Change Management & Organizational Development",
-                    "Performance KPI Development & Monitoring"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Led administrative team in processing payroll for 690 employees across multiple companies",
-                            "Mentored and trained team members on payroll procedures and system usage",
-                            "Supervised workflow management and task allocation for efficiency improvements",
-                            "Implemented team performance improvements reducing processing time by 25%",
-                            "Managed team communication and coordination with external stakeholders",
-                            "Provided leadership in problem-solving and process optimization initiatives"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Led client service teams for multiple contract implementations",
-                            "Trained and supervised team members on client-specific procedures",
-                            "Managed team performance and quality standards across projects",
-                            "Coordinated team schedules and workload distribution",
-                            "Provided leadership in client relationship management and service delivery"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Led and supervised technical, pre-sales, and accounts support teams",
-                            "Managed team performance and coordinated cross-functional collaboration",
-                            "Implemented team training programs and performance improvement initiatives",
-                            "Supervised workflow management and task allocation across departments",
-                            "Provided leadership in customer service excellence and team development"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Led project teams for Huawei telecommunications installations",
-                            "Coordinated with site foremen and managed project documentation",
-                            "Ensured team compliance with project timelines and quality standards",
-                            "Provided leadership during complex technical implementations",
-                            "Mentored junior team members and facilitated knowledge transfer",
-                            "Supervised team performance and safety compliance"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Led sales team in achieving monthly targets and performance goals",
-                            "Trained staff on customer service excellence and sales techniques",
-                            "Managed team coordination between sales, accounts, and stock control",
-                            "Developed team relationship strategies that improved customer retention by 30%",
-                            "Supervised team schedules and performance monitoring",
-                            "Provided leadership in workflow optimization and process improvements"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Led a team of 5 machinery operators in plastic welding operations",
-                            "Implemented safety procedures reducing workplace incidents by 100%",
-                            "Trained new team members on equipment operation and safety protocols",
-                            "Managed daily production schedules and quality control processes",
-                            "Achieved 98% production targets through effective team coordination",
-                            "Conducted regular team meetings and performance reviews"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Provided team support and supervision for retail operations",
-                            "Trained staff members on customer service and stock management procedures",
-                            "Assisted with team coordination and workflow management",
-                            "Supported team performance monitoring and improvement initiatives",
-                            "Provided leadership in daily operational coordination and planning"
-                        ]
-                    }
-                ]
+                experience: standardExperience
             },
             "Senior Accounts Administrator": {
                 profile: "Senior Accounts Administrator with 7+ years of comprehensive experience in advanced financial administration, accounts management, and process oversight. Expert in managing accounts payable/receivable across multiple companies with proven track record in complex reconciliations, SARS compliance, and audit coordination. Ready to lead accounts operations and drive financial excellence through strategic oversight and team leadership.",
@@ -2161,23 +486,486 @@
                     "Client Communication & Stakeholder Management",
                     "Database Management & Advanced Data Analysis"
                 ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Senior Accounts Administrator",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Led comprehensive accounts payable and receivable management for multiple companies",
-                            "Processed invoices and payments with 100% accuracy using advanced financial oversight",
-                            "Conducted advanced monthly reconciliations for all accounts with strategic quality control",
-                            "Prepared complex VAT returns and ensured advanced SARS compliance",
-                            "Led external audit processes providing comprehensive documentation and strategic support",
-                            "Managed customer accounts and payment query resolution with executive-level oversight",
-                            "Prepared executive financial reports and provided strategic budget analysis",
-                            "Mentored junior accounts staff and implemented advanced training programs"
-                        ]
-                    }
-                ]
+                experience: standardExperience
+            },
+            "Senior Payroll Administrator": {
+                profile: "Senior Payroll Administrator with 7+ years of comprehensive experience managing large-scale payroll operations for up to 690 employees across multiple companies. Proven track record in ensuring 100% compliance with SARS requirements, implementing process improvements that reduce processing time by 25%, and leading payroll system implementations. Ready to advance to senior-level positions with increased responsibility for team leadership and strategic payroll management.",
+                keySkills: [
+                    "Large-scale payroll processing (690+ employees across multiple companies)",
+                    "Advanced EMP201 & EMP501 submissions and compliance management",
+                    "Payroll system optimization and process improvement leadership",
+                    "Multi-company payroll coordination and management",
+                    "Senior-level legislative compliance and regulatory updates",
+                    "Team mentoring and junior staff development"
+                ],
+                toolsAndSystems: [
+                    "SAGE Pastel Payroll & HR (Expert level)",
+                    "Xero Payroll (Advanced configuration)",
+                    "Sage One Accounting",
+                    "PSIBER (Multi-company setup)",
+                    "Microsoft Office Suite (Expert Excel, PowerBI)",
+                    "SARS eFiling System (Advanced submissions)",
+                    "Office 365 & Advanced Cloud Platforms",
+                    "Teams, Zoom & Leadership Communication Tools",
+                    "Advanced Database Management (SQL)",
+                    "Project Management Software (MS Project, Asana)"
+                ],
+                skills: [
+                    "Senior Payroll Management (100% accuracy, 690+ employees)",
+                    "Advanced SARS Compliance & Legislative Management",
+                    "Payroll Process Leadership & Optimization (25% efficiency gains)",
+                    "Multi-company Payroll Coordination & Strategy",
+                    "Team Leadership & Staff Development",
+                    "Senior-level HR Records Management & Compliance",
+                    "Advanced Payroll Reconciliations & Management Reporting",
+                    "Strategic Process Improvement & Change Management",
+                    "Confidentiality & Data Protection Leadership (POPIA Compliance)",
+                    "Advanced Excel & Analytics (Pivot Tables, VLOOKUP, Macros, PowerBI)",
+                    "Business Process Analysis & Workflow Strategy",
+                    "Quality Management & ISO Standards Implementation",
+                    "Labour Relations Act Expertise & Policy Development",
+                    "Health & Safety Compliance Leadership"
+                ],
+                experience: standardExperience
+            },
+            "Payroll Manager": {
+                profile: "Experienced Payroll Manager with 7+ years of progressive leadership in payroll operations, currently managing payroll for 690+ employees across multiple companies. Proven expertise in strategic payroll management, team leadership, process optimization, and ensuring 100% compliance with SARS requirements. Ready to lead payroll departments and drive organizational payroll strategy with a track record of implementing improvements that reduce processing time by 25%.",
+                keySkills: [
+                    "Payroll department leadership and team management",
+                    "Strategic payroll planning and multi-company coordination",
+                    "Advanced compliance management and regulatory oversight",
+                    "Payroll process optimization and technology leadership",
+                    "Budget management and cost control for payroll operations",
+                    "Stakeholder management and cross-functional collaboration"
+                ],
+                toolsAndSystems: [
+                    "SAGE Pastel Payroll & HR (Expert level)",
+                    "Xero Payroll (Advanced management)",
+                    "Sage One Accounting",
+                    "PSIBER (Enterprise configuration)",
+                    "Microsoft Office Suite (Expert Excel, PowerBI, Project)",
+                    "SARS eFiling System (Expert submissions)",
+                    "Office 365 & Enterprise Cloud Platforms",
+                    "Teams, Zoom & Leadership Communication Tools",
+                    "Advanced Database Management (SQL, Access)",
+                    "Project Management Software (MS Project, Asana, Monday.com)"
+                ],
+                skills: [
+                    "Payroll Department Leadership & Team Management",
+                    "Strategic Payroll Planning & Multi-company Operations (690+ employees)",
+                    "Advanced SARS Compliance & Legislative Leadership",
+                    "Process Optimization & Technology Implementation (25% efficiency gains)",
+                    "Budget Management & Cost Control for Payroll Operations",
+                    "Stakeholder Management & Executive Reporting",
+                    "Change Management & Organizational Development",
+                    "Risk Management & Compliance Oversight",
+                    "Performance Management & Team Development",
+                    "Advanced Excel & Analytics (PowerBI, Dashboard Creation)",
+                    "Strategic Business Process Analysis & Workflow Design",
+                    "Quality Management & Audit Leadership",
+                    "Labour Relations & Policy Development",
+                    "Project Management & Implementation Leadership"
+                ],
+                experience: standardExperience
+            },
+            "Financial Administrator": {
+                profile: "Senior Financial Administrator with 7+ years of comprehensive experience in financial operations, bookkeeping, and compliance management. Expert in Sage and Xero systems with proven track record in managing accounts for multiple companies, VAT submissions, and financial reporting. Ready to advance to senior financial administration roles with increased responsibility for financial strategy and team leadership.",
+                keySkills: [
+                    "Senior-level financial administration and strategic oversight",
+                    "Multi-company financial operations and reporting",
+                    "Advanced VAT compliance and SARS submissions",
+                    "Financial process improvement and system optimization",
+                    "Team leadership and financial staff development",
+                    "Management reporting and financial analysis"
+                ],
+                toolsAndSystems: [
+                    "Xero (Certified Advisor - Expert level)",
+                    "Sage One Accounting (Advanced)",
+                    "Receipt Bank & Advanced Document Management",
+                    "Sage Pastel Payroll Integration",
+                    "Microsoft Office Suite (Expert Excel, PowerBI)",
+                    "SARS eFiling System (Advanced)",
+                    "Office 365 & Enterprise Cloud Platforms",
+                    "Teams, Zoom & Leadership Communication Tools",
+                    "Advanced Database Management (Access, SQL)",
+                    "Financial Reporting Software (PowerBI, Tableau)"
+                ],
+                skills: [
+                    "Senior Financial Administration & Strategic Management",
+                    "Multi-company Financial Operations & Coordination",
+                    "Advanced Bookkeeping & Financial Reconciliations",
+                    "VAT Management & Advanced SARS Compliance",
+                    "Financial Process Leadership & Optimization",
+                    "Management Accounts Preparation & Analysis",
+                    "Financial Reporting & Executive Dashboard Creation",
+                    "Audit Coordination & Compliance Management",
+                    "Advanced Excel & Financial Modeling (PowerBI)",
+                    "Business Process Analysis & Financial Workflow Design",
+                    "Quality Management & Financial Controls Implementation",
+                    "Cloud-based Financial Systems Leadership",
+                    "Digital Document Management & Automation",
+                    "Client Relationship Management & Stakeholder Communication"
+                ],
+                experience: standardExperience
+            },
+            "Accounts Supervisor": {
+                profile: "Experienced Accounts Supervisor with 7+ years of comprehensive financial administration and proven leadership capabilities. Expert in managing accounts operations across multiple companies with strong background in team supervision, process improvement, and ensuring 100% accuracy in financial operations. Ready to lead accounts teams and drive financial excellence through strategic oversight and staff development.",
+                keySkills: [
+                    "Accounts team leadership and supervision",
+                    "Multi-company accounts management and coordination",
+                    "Financial process oversight and improvement",
+                    "Staff training and development in accounts procedures",
+                    "Quality control and accuracy management",
+                    "Stakeholder management and reporting"
+                ],
+                toolsAndSystems: [
+                    "Xero Accounting (Expert supervision)",
+                    "Sage One Accounting (Advanced management)",
+                    "Sage Pastel Payroll Integration",
+                    "Sonar (payment system management)",
+                    "Microsoft Office Suite (Expert Excel, PowerBI)",
+                    "SARS eFiling System (Advanced)",
+                    "Office 365 & Enterprise Cloud Platforms",
+                    "Teams, Zoom & Leadership Communication Tools",
+                    "Advanced Database Management (Access, SQL)",
+                    "Financial Reporting & Document Management Software"
+                ],
+                skills: [
+                    "Accounts Team Leadership & Supervision",
+                    "Multi-company Accounts Management & Coordination",
+                    "Advanced Financial Reconciliations & Analysis",
+                    "Invoice Processing & Payment Management Leadership (100% accuracy)",
+                    "SARS Compliance & Tax Submissions Oversight",
+                    "Financial Reporting & Team Performance Management",
+                    "Audit Support & Documentation Leadership",
+                    "Advanced Excel & Financial Analysis (PowerBI, Pivot Tables)",
+                    "Customer Account Management & Relations Oversight",
+                    "Month-end & Year-end Procedures Leadership",
+                    "Digital Document Management & Process Automation",
+                    "Business Process Analysis & Workflow Optimization",
+                    "Quality Management & Compliance Standards Implementation",
+                    "Client Communication & Stakeholder Management"
+                ],
+                experience: standardExperience
+            },
+            "Payroll & HR Coordinator": {
+                profile: "Experienced Payroll & HR Coordinator with 7+ years of integrated payroll and human resources management. Expert in coordinating payroll operations for 690+ employees while supporting HR functions including onboarding, terminations, and employee records management. Proven ability to bridge payroll and HR operations, ensuring seamless employee lifecycle management and compliance.",
+                keySkills: [
+                    "Integrated payroll and HR operations coordination",
+                    "Employee lifecycle management (onboarding to termination)",
+                    "HR records management and compliance",
+                    "Payroll-HR system integration and optimization",
+                    "Employee relations and query resolution",
+                    "Compliance management across payroll and HR functions"
+                ],
+                toolsAndSystems: [
+                    "SAGE Pastel Payroll & HR (Expert integration)",
+                    "Xero Payroll with HR integration",
+                    "PSIBER (HR module management)",
+                    "Microsoft Office Suite (Expert Excel, HR analytics)",
+                    "SARS eFiling System (Employee compliance)",
+                    "Office 365 & HR Cloud Platforms",
+                    "Teams, Zoom & HR Communication Tools",
+                    "Database Management (Employee records, SQL)",
+                    "HR Information Systems (HRIS basics)",
+                    "Document Management & HR Compliance Systems"
+                ],
+                skills: [
+                    "Integrated Payroll & HR Coordination (690+ employees)",
+                    "Employee Lifecycle Management (Onboarding to Termination)",
+                    "HR Records Management & Compliance",
+                    "Payroll-HR System Integration & Optimization",
+                    "Employee Relations & Query Resolution",
+                    "SARS Compliance & Employee Tax Management",
+                    "HR Policy Implementation & Compliance Monitoring",
+                    "Advanced Excel & HR Analytics",
+                    "Confidentiality & Data Protection (POPIA Compliance)",
+                    "Multi-company HR Operations Coordination",
+                    "Business Process Analysis & HR Workflow Optimization",
+                    "Labour Relations Act Knowledge & Implementation",
+                    "Health & Safety Compliance in HR Operations",
+                    "Change Management & HR System Implementation"
+                ],
+                experience: standardExperience
+            },
+            "HRIS Specialist": {
+                profile: "Technology-focused professional with 7+ years of progressive experience in business systems administration, database management, and HR technology integration. Strong background in system implementation, user training, and process optimization across multiple platforms including Sage, Xero, and enterprise systems. Proven ability to bridge the gap between HR operations and technology solutions, with expertise in data analysis, system configuration, and end-user support.",
+                keySkills: [
+                    "HRIS system administration and configuration",
+                    "HR-technology integration and data management",
+                    "System implementation and user training",
+                    "Database management and analytics",
+                    "Process automation and workflow optimization",
+                    "HR compliance and reporting through technology"
+                ],
+                toolsAndSystems: [
+                    "SAGE Pastel HR & Payroll (Advanced configuration)",
+                    "Xero (System integration and analytics)",
+                    "PSIBER (Advanced HR module management)",
+                    "Microsoft Office Suite (Expert Excel, PowerBI, Access)",
+                    "Database Management (SQL, Access, HR analytics)",
+                    "Office 365 & Advanced Cloud HR Platforms",
+                    "Teams, Zoom & HR Technology Communication",
+                    "HR Information Systems (HRIS administration)",
+                    "Document Management & HR Technology Systems",
+                    "System Monitoring & Performance Tools"
+                ],
+                skills: [
+                    "HRIS Administration & System Configuration",
+                    "HR Technology Integration & Data Management",
+                    "Database Administration & Analytics",
+                    "System Implementation & Change Management",
+                    "User Training & Technical Support",
+                    "Process Automation & Workflow Optimization",
+                    "Advanced Excel & Data Analysis (PowerBI, Pivot Tables)",
+                    "HR Compliance & Technology-driven Reporting",
+                    "System Security & Data Protection (POPIA Compliance)",
+                    "Cross-functional Collaboration & Stakeholder Communication",
+                    "Technical Documentation & Procedure Development",
+                    "Performance Monitoring & System Optimization",
+                    "Report Generation & Dashboard Creation",
+                    "Technology Project Management & Implementation"
+                ],
+                experience: standardExperience
+            },
+            "Department Manager": {
+                profile: "Experienced Department Manager with 7+ years of progressive leadership managing finance and administration operations. Proven track record in leading teams, optimizing processes, and ensuring 100% accuracy across department operations. Expert in managing payroll for 690+ employees while overseeing comprehensive departmental strategy, budget management, and cross-functional collaboration.",
+                keySkills: [
+                    "Departmental leadership and strategic management",
+                    "Team development and performance management",
+                    "Budget management and cost control",
+                    "Process optimization and operational efficiency",
+                    "Cross-functional collaboration and stakeholder management",
+                    "Strategic planning and implementation"
+                ],
+                toolsAndSystems: [
+                    "SAGE Pastel (Enterprise management)",
+                    "Xero (Departmental oversight)",
+                    "Microsoft Office Suite (Expert Excel, PowerBI, Project)",
+                    "SARS eFiling System (Departmental compliance)",
+                    "Office 365 & Enterprise Management Platforms",
+                    "Teams, Zoom & Leadership Communication Tools",
+                    "Advanced Database Management (SQL, Analytics)",
+                    "Project Management Software (MS Project, Asana)",
+                    "Performance Management & KPI Tools",
+                    "Budget & Financial Planning Software"
+                ],
+                skills: [
+                    "Department Leadership & Strategic Management",
+                    "Team Development & Performance Management (690+ employee operations)",
+                    "Budget Management & Cost Control",
+                    "Process Optimization & Operational Excellence (25% efficiency gains)",
+                    "Strategic Planning & Implementation",
+                    "Cross-functional Collaboration & Stakeholder Management",
+                    "Change Management & Organizational Development",
+                    "Quality Management & Compliance Oversight",
+                    "Performance Monitoring & KPI Development",
+                    "Advanced Excel & Business Analytics (PowerBI)",
+                    "Digital Communication & Remote Team Management",
+                    "Risk Management & Business Continuity",
+                    "Policy Development & Implementation",
+                    "Executive Reporting & Decision Support"
+                ],
+                experience: standardExperience
+            },
+            "Payroll Systems Administrator": {
+                profile: "Systems-focused professional with 7+ years of comprehensive experience in business system administration, database management, and technical support. Strong background in system configuration, user account management, and process automation gained through extensive work with Sage Pastel, Xero, and enterprise systems. Proven ability to optimize system performance, implement technical improvements, and provide expert-level support across multiple business environments.",
+                keySkills: [
+                    "System administration and technical configuration",
+                    "Database management and performance optimization",
+                    "User account management and security administration",
+                    "Technical support and system troubleshooting",
+                    "Process automation and system integration",
+                    "System backup, recovery, and maintenance procedures"
+                ],
+                toolsAndSystems: [
+                    "Sage Pastel (Advanced system administration)",
+                    "Xero (System configuration and management)",
+                    "PSIBER (Technical administration)",
+                    "Microsoft Office Suite (Expert Excel, Access, SQL)",
+                    "Database Management Systems (SQL, Access)",
+                    "Office 365 & Enterprise Cloud Platforms",
+                    "System Monitoring & Performance Tools",
+                    "Backup & Recovery Solutions",
+                    "Security Management & Access Control",
+                    "Network Administration & Connectivity"
+                ],
+                skills: [
+                    "System Administration & Technical Configuration",
+                    "Database Management & Performance Optimization",
+                    "User Account Management & Security Administration",
+                    "Technical Support & System Troubleshooting",
+                    "Process Automation & System Integration",
+                    "System Monitoring & Performance Analysis",
+                    "Backup & Recovery Procedures",
+                    "Security Management & Compliance",
+                    "Technical Documentation & Procedure Development",
+                    "Change Management & System Updates",
+                    "Advanced Excel & Database Analysis",
+                    "Network Connectivity & System Integration",
+                    "Problem Resolution & Technical Innovation",
+                    "Cross-platform System Administration"
+                ],
+                experience: standardExperience
+            },
+            "IT Systems Coordinator": {
+                profile: "Technology coordinator with 7+ years of diverse experience in business systems management, technical support, and cross-functional technology coordination. Strong background in system integration, user support, and technology project coordination gained through extensive work across multiple industries. Proven ability to coordinate IT operations, manage system implementations, and provide technical leadership in diverse business environments.",
+                keySkills: [
+                    "IT systems coordination and project management",
+                    "Cross-functional technology integration",
+                    "Technical support and user coordination",
+                    "System implementation and change management",
+                    "Technology project coordination and oversight",
+                    "Business system analysis and optimization"
+                ],
+                toolsAndSystems: [
+                    "Business System Integration (Sage, Xero, PSIBER)",
+                    "Microsoft Office Suite (Expert Excel, PowerBI, Access)",
+                    "Office 365 & Enterprise Cloud Platform Coordination",
+                    "System Monitoring & Performance Coordination Tools",
+                    "Project Management Software (MS Project, Asana)",
+                    "Database Coordination & Management (SQL, Access)",
+                    "Network Connectivity & System Integration",
+                    "IT Security & Compliance Coordination",
+                    "Communication & Collaboration Platforms",
+                    "Technology Documentation & Training Systems"
+                ],
+                skills: [
+                    "IT Systems Coordination & Integration Management",
+                    "Technology Project Coordination & Oversight",
+                    "Cross-functional Technology Collaboration",
+                    "System Implementation & Change Coordination",
+                    "Technical Support Coordination & User Training",
+                    "Business System Analysis & Process Coordination",
+                    "Database Coordination & Technology Management",
+                    "Advanced Excel & Technology Analytics",
+                    "Digital Communication & Technology Leadership",
+                    "System Security Coordination & Compliance Management",
+                    "Technology Documentation & Procedure Coordination",
+                    "Performance Monitoring & Technology Optimization",
+                    "Stakeholder Communication & Technology Planning",
+                    "Cross-platform Technology Coordination"
+                ],
+                experience: standardExperience
+            },
+            "Inventory Supervisor": {
+                profile: "Experienced Inventory Supervisor with 7+ years of comprehensive inventory management and team leadership. Proven track record in maintaining 99.5% inventory accuracy, implementing efficient procedures, and reducing stock discrepancies by 35%. Ready to lead inventory teams while leveraging payroll management experience for comprehensive warehouse operations.",
+                keySkills: [
+                    "Inventory team leadership and supervision",
+                    "Multi-location inventory coordination",
+                    "Stock control process optimization",
+                    "Team training and development",
+                    "Quality control and accuracy management",
+                    "Vendor relationship management and coordination"
+                ],
+                toolsAndSystems: [
+                    "Advanced Stock Control Systems & Inventory Management",
+                    "Microsoft Office Suite (Expert Excel, Analytics)",
+                    "Inventory Management Software (Supervisor level)",
+                    "Point of Sale Systems (Management)",
+                    "Barcode Scanning Systems (Advanced)",
+                    "Office 365 & Cloud Inventory Platforms",
+                    "Teams, Zoom & Leadership Communication Tools",
+                    "Advanced Database Management (Access, SQL)",
+                    "Supplier Management & Procurement Systems",
+                    "Quality Control & Inspection Management Tools"
+                ],
+                skills: [
+                    "Inventory Team Leadership & Supervision",
+                    "Multi-location Inventory Management & Coordination",
+                    "Stock Control Process Optimization (99.5% accuracy achievement)",
+                    "Team Training & Development in Inventory Procedures",
+                    "Warehouse Operations & Organization Leadership",
+                    "Supplier Relationship Management & Coordination",
+                    "Stock Valuation & Reporting Oversight",
+                    "Loss Prevention & Stock Security Management (35% discrepancy reduction)",
+                    "Quality Control & Inspection Leadership",
+                    "Advanced Excel & Inventory Analytics",
+                    "Digital Document Management & Cloud Platforms",
+                    "Business Process Analysis & Workflow Optimization",
+                    "Health & Safety Compliance Leadership",
+                    "Cross-functional Collaboration & Stakeholder Management"
+                ],
+                experience: standardExperience
+            },
+            "Operations Coordinator": {
+                profile: "Strategic Operations Coordinator with 7+ years of comprehensive operations management experience. Expert in coordinating multi-company operations, managing teams, and optimizing processes that reduce operational costs by 30%. Proven ability to coordinate between payroll, inventory, and operational functions ensuring seamless business operations.",
+                keySkills: [
+                    "Multi-company operations coordination",
+                    "Cross-functional team coordination",
+                    "Process optimization and efficiency improvement",
+                    "Vendor and supplier coordination",
+                    "Quality control and compliance coordination",
+                    "Strategic planning and implementation support"
+                ],
+                toolsAndSystems: [
+                    "Microsoft Office Suite (Expert Excel, PowerBI, Project)",
+                    "Operations Management Software",
+                    "Office 365 & Enterprise Cloud Platforms",
+                    "Teams, Zoom & Operations Communication Tools",
+                    "Advanced Database Management (SQL, Analytics)",
+                    "Project Management Software (MS Project, Asana)",
+                    "KPI Dashboard & Performance Monitoring Tools",
+                    "Inventory Management Integration",
+                    "Quality Management Systems",
+                    "Vendor Management & Procurement Systems"
+                ],
+                skills: [
+                    "Multi-company Operations Coordination",
+                    "Cross-functional Team Coordination & Leadership",
+                    "Process Optimization & Efficiency Improvement (30% cost reduction)",
+                    "Vendor Relationship Management & Coordination",
+                    "Quality Control & Compliance Coordination",
+                    "Strategic Planning & Implementation Support",
+                    "Performance Monitoring & KPI Coordination",
+                    "Advanced Excel & Operations Analytics (PowerBI)",
+                    "Digital Communication & Remote Operations Management",
+                    "Change Management & Organizational Coordination",
+                    "Risk Management & Business Continuity",
+                    "Cross-functional Collaboration & Stakeholder Management",
+                    "Policy Implementation & Compliance Coordination",
+                    "Executive Reporting & Operations Support"
+                ],
+                experience: standardExperience
+            },
+            "Team Leader": {
+                profile: "Experienced Team Leader with 6+ years of successful team management across diverse industries. Proven ability to lead teams of up to 15 members, improve productivity by 25%, and maintain high employee satisfaction rates. Strong background in training, performance management, and implementing process improvements that drive operational excellence.",
+                keySkills: [
+                    "Staff supervision and mentoring",
+                    "Task allocation and workflow management",
+                    "Performance monitoring",
+                    "Problem-solving under pressure",
+                    "Stock and inventory control"
+                ],
+                toolsAndSystems: [
+                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
+                    "1CRM System & Team Management",
+                    "Manufacturing Equipment & Production Systems",
+                    "Stock Control Systems",
+                    "Quality Management Tools",
+                    "Office 365 & Cloud Platforms",
+                    "Teams, Zoom & Communication Tools",
+                    "Database Management (Access, SQL basics)",
+                    "Performance Monitoring & KPI Tools",
+                    "Project Management Software (MS Project, Asana)"
+                ],
+                skills: [
+                    "Team Leadership & Management (up to 15 members)",
+                    "Staff Training & Development",
+                    "Performance Management & Coaching",
+                    "Workflow Optimization & Process Improvement (25% productivity gains)",
+                    "Conflict Resolution & Problem Solving",
+                    "Goal Setting & Performance Monitoring",
+                    "Cross-functional Collaboration",
+                    "Quality Control & Assurance",
+                    "Safety Management & Compliance (100% incident reduction)",
+                    "Advanced Excel & Data Analysis",
+                    "Digital Communication & Remote Team Management",
+                    "Employee Engagement & Motivation Strategies",
+                    "Change Management & Organizational Development",
+                    "Performance KPI Development & Monitoring"
+                ],
+                experience: standardExperience
             },
             "Inventory Manager": {
                 profile: "Strategic Inventory Manager with 7+ years of comprehensive inventory management and operations leadership. Proven track record in maintaining 99.5% inventory accuracy, implementing advanced procedures, and reducing stock discrepancies by 35%. Expert in leading inventory teams, optimizing warehouse operations, and driving strategic inventory excellence across multiple locations.",
@@ -2217,147 +1005,7 @@
                     "Health & Safety Compliance Leadership",
                     "Cross-functional Collaboration & Strategic Stakeholder Management"
                 ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Inventory Manager",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed strategic inventory operations across multiple companies coordinating supplies and documentation",
-                            "Led implementation of advanced stock control procedures improving accuracy to 99.5%",
-                            "Managed team development and leadership for inventory management procedures",
-                            "Coordinated with suppliers maintaining optimal stock levels across all strategic locations",
-                            "Implemented strategic quality control measures ensuring organization and efficiency of all inventory",
-                            "Led comprehensive inventory audits and reconciliation procedures across multiple entities",
-                            "Developed inventory management strategies reducing costs by 30% through strategic optimization"
-                        ]
-                    }
-                ]
-            },
-            "Stock Controller": {
-                profile: "Detail-oriented Stock Controller with 5+ years of experience in inventory management, stock control systems, and warehouse operations. Proven track record in maintaining 99.5% inventory accuracy, implementing efficient stock procedures, and reducing stock discrepancies by 35%. Experienced in various industries including automotive, manufacturing, and retail environments.",
-                keySkills: [
-                    "Inventory tracking and management",
-                    "Recording receipts and payments",
-                    "Reporting and reconciliation",
-                    "Attention to detail"
-                ],
-                toolsAndSystems: [
-                    "Stock Control Systems & Inventory Management",
-                    "Microsoft Office Suite (Advanced Excel, Word, PowerPoint)",
-                    "Inventory Management Software",
-                    "Point of Sale Systems",
-                    "Barcode Scanning Systems",
-                    "Office 365 & Cloud Platforms",
-                    "Teams, Zoom & Communication Tools",
-                    "Database Management (Access, SQL basics)",
-                    "Supplier Management & Procurement Systems",
-                    "Quality Control & Inspection Tools"
-                ],
-                skills: [
-                    "Inventory Management & Control (99.5% accuracy achievement)",
-                    "Stock Taking & Cycle Counting",
-                    "Warehouse Operations & Organization",
-                    "Stock Control Systems & Software",
-                    "Purchase Order Management",
-                    "Supplier Relationship Management",
-                    "Stock Valuation & Reporting",
-                    "Loss Prevention & Stock Security (35% discrepancy reduction)",
-                    "Quality Control & Inspection",
-                    "Advanced Excel & Data Analysis",
-                    "Digital Document Management & Cloud Platforms",
-                    "Business Process Analysis & Workflow Optimization",
-                    "Health & Safety Compliance",
-                    "Database Management & Inventory Tracking"
-                ],
-                experience: [
-                    {
-                        company: "KCE Consulting",
-                        position: "Payroll Administrator / Junior Bookkeeper",
-                        period: "Feb 2020 - Current",
-                        duties: [
-                            "Managed inventory of office supplies and administrative materials across multiple companies",
-                            "Maintained accurate records of documentation and filing systems",
-                            "Implemented stock control procedures for payroll forms and compliance documents",
-                            "Conducted regular audits of documentation inventory and filing systems",
-                            "Coordinated with suppliers for office materials and maintained optimal stock levels",
-                            "Ensured quality control and organization of all administrative inventory"
-                        ]
-                    },
-                    {
-                        company: "Elmarie Winter Consulting Services",
-                        position: "Payroll Administrator (Contract Work)",
-                        period: "Jan 2019 - Jan 2020",
-                        duties: [
-                            "Managed inventory control for client documentation and administrative supplies",
-                            "Maintained organized filing systems and document inventory across multiple clients",
-                            "Implemented stock control procedures for client materials and resources",
-                            "Conducted regular inventory checks of client documentation and supplies",
-                            "Coordinated stock management for contract-based service delivery"
-                        ]
-                    },
-                    {
-                        company: "Initio Networx",
-                        position: "Operations Manager / Payroll Administrator",
-                        period: "Feb 2018 - Aug 2018",
-                        duties: [
-                            "Managed inventory control for office supplies and technical equipment",
-                            "Maintained stock records for operational materials and documentation",
-                            "Implemented inventory management procedures for ISP operations",
-                            "Conducted stock takes and maintained accurate inventory records",
-                            "Coordinated with suppliers for equipment and operational supplies"
-                        ]
-                    },
-                    {
-                        company: "Initec Computer Hardware",
-                        position: "Labourer, Team Leader, HOA Manager (Client Manager), Huawei Projects Manager, Project Controller, Huawei Billing Manager",
-                        period: "Aug 2016 - Feb 2018",
-                        duties: [
-                            "Managed inventory control for project materials and technical equipment",
-                            "Maintained stock records for telecommunications project supplies",
-                            "Implemented inventory tracking for project documentation and materials",
-                            "Conducted regular stock audits for project equipment and supplies",
-                            "Coordinated with suppliers for project-specific inventory requirements"
-                        ]
-                    },
-                    {
-                        company: "Bryanston Executive Cars",
-                        position: "Second hand car sales, Accounts Assistant, Stock Controller",
-                        period: "April 2015 - July 2016",
-                        duties: [
-                            "Managed inventory for vehicle stock with 99.5% accuracy",
-                            "Conducted daily stock takes and maintained detailed records",
-                            "Implemented stock control procedures reducing discrepancies by 35%",
-                            "Coordinated with sales team on stock availability and customer requirements",
-                            "Managed vehicle documentation and compliance records",
-                            "Assisted customers with vehicle selection and information"
-                        ]
-                    },
-                    {
-                        company: "Net-King",
-                        position: "Team Leader, Machine Supervisor",
-                        period: "June 2013 - Mar 2015",
-                        duties: [
-                            "Maintained stock control for manufacturing materials and equipment",
-                            "Managed raw material inventory and production scheduling",
-                            "Implemented inventory tracking system improving efficiency by 20%",
-                            "Conducted regular stock audits and reconciliations",
-                            "Coordinated with suppliers on delivery schedules and quality requirements"
-                        ]
-                    },
-                    {
-                        company: "Birds For Africa",
-                        position: "Counter Sales & Stock Controller (Part time)",
-                        period: "Sep 2011 - May 2013",
-                        duties: [
-                            "Managed retail stock including live animals and pet supplies",
-                            "Maintained optimal stock levels through effective ordering procedures",
-                            "Conducted weekly stock takes and maintained inventory records",
-                            "Assisted customers with product selection and care information",
-                            "Ensured compliance with animal welfare and health regulations"
-                        ]
-                    }
-                ]
+                experience: standardExperience
             }
         };
 
