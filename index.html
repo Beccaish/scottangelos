@@ -31,15 +31,18 @@
         @media print {
             .no-print { display: none !important; }
             .cv-content { 
-                padding: 20px !important; 
+                padding: 15px !important; 
                 margin: 0 !important; 
                 box-shadow: none !important;
                 border-radius: 0 !important;
+                font-size: 12px !important;
+                line-height: 1.3 !important;
             }
             body { 
                 background: white !important; 
                 margin: 0 !important;
                 padding: 0 !important;
+                font-size: 12px !important;
             }
             .editable { 
                 border: none !important; 
@@ -52,6 +55,49 @@
             .grid { display: block !important; }
             .lg\:col-span-3 { width: 100% !important; }
             .fade-in { opacity: 1 !important; animation: none !important; }
+            
+            /* Prevent page breaks within sections */
+            .editable-section {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                margin-bottom: 12px !important;
+            }
+            
+            /* Control page breaks around major sections */
+            .editable-section h3 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+            
+            /* Smaller fonts for print */
+            h1 { font-size: 22px !important; line-height: 1.2 !important; margin-bottom: 8px !important; }
+            h2 { font-size: 16px !important; line-height: 1.2 !important; margin-bottom: 12px !important; }
+            h3 { font-size: 14px !important; line-height: 1.3 !important; margin-bottom: 8px !important; }
+            h4 { font-size: 13px !important; line-height: 1.3 !important; }
+            p, span, li { font-size: 11px !important; line-height: 1.3 !important; }
+            .text-sm { font-size: 10px !important; }
+            .text-xs { font-size: 9px !important; }
+            
+            /* Reduce spacing */
+            .mb-6 { margin-bottom: 12px !important; }
+            .mb-4 { margin-bottom: 8px !important; }
+            .mb-3 { margin-bottom: 6px !important; }
+            .mb-2 { margin-bottom: 4px !important; }
+            .pb-6 { padding-bottom: 12px !important; }
+            .pt-6 { padding-top: 12px !important; }
+            .p-4 { padding: 8px !important; }
+            .space-y-6 > * + * { margin-top: 12px !important; }
+            .space-y-4 > * + * { margin-top: 8px !important; }
+            .space-y-3 > * + * { margin-top: 6px !important; }
+            .space-y-1 > * + * { margin-top: 2px !important; }
+            .gap-4 { gap: 8px !important; }
+            .gap-2 { gap: 4px !important; }
+            
+            /* Ensure work experience items stay together */
+            .border-l-2.border-primary {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
         }
         .fade-in { opacity: 0; animation: fadeIn 0.5s ease-in forwards; }
         @keyframes fadeIn { to { opacity: 1; } }
