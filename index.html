@@ -30,9 +30,28 @@
     <style>
         @media print {
             .no-print { display: none !important; }
-            .cv-content { padding: 0 !important; margin: 0 !important; }
-            body { background: white !important; }
-            .editable { border: none !important; background: none !important; }
+            .cv-content { 
+                padding: 20px !important; 
+                margin: 0 !important; 
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            body { 
+                background: white !important; 
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .editable { 
+                border: none !important; 
+                background: none !important; 
+                outline: none !important;
+            }
+            .max-w-7xl { max-width: none !important; }
+            .px-4, .px-6, .px-8 { padding-left: 0 !important; padding-right: 0 !important; }
+            .py-8 { padding-top: 0 !important; padding-bottom: 0 !important; }
+            .grid { display: block !important; }
+            .lg\:col-span-3 { width: 100% !important; }
+            .fade-in { opacity: 1 !important; animation: none !important; }
         }
         .fade-in { opacity: 0; animation: fadeIn 0.5s ease-in forwards; }
         @keyframes fadeIn { to { opacity: 1; } }
@@ -92,7 +111,7 @@
                         <i class="fas fa-save"></i>
                         <span>Save Changes</span>
                     </button>
-                    <button onclick="window.print()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
+                    <button onclick="printCV()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
                         <i class="fas fa-download"></i>
                         <span>Download CV</span>
                     </button>
@@ -1135,38 +1154,58 @@
         function saveChanges() {
             if (!currentJobTitle) return;
             
-            // Collect edited data
-            const profile = document.querySelector('[data-field="profile"]').textContent;
-            const keySkills = Array.from(document.querySelectorAll('[data-field="keySkills"]')).map(el => el.textContent);
-            const skills = Array.from(document.querySelectorAll('[data-field="skills"]')).map(el => el.textContent);
-            const toolsAndSystems = Array.from(document.querySelectorAll('[data-field="toolsAndSystems"]')).map(el => el.textContent);
-            
-            // Collect experience data
-            const experiences = Array.from(document.querySelectorAll('[data-field="experience"]')).map(expEl => {
-                return {
-                    company: expEl.querySelector('[data-exp-field="company"]').textContent,
-                    position: expEl.querySelector('[data-exp-field="position"]').textContent,
-                    period: expEl.querySelector('[data-exp-field="period"]').textContent,
-                    duties: Array.from(expEl.querySelectorAll('[data-exp-field="duty"]')).map(duty => duty.textContent)
-                };
-            });
+            try {
+                // Collect edited data
+                const profile = document.querySelector('[data-field="profile"]')?.textContent || "";
+                const keySkillsElements = document.querySelectorAll('[data-field="keySkills"]');
+                const keySkills = Array.from(keySkillsElements).map(el => el.textContent.trim()).filter(text => text);
+                
+                const skillsElements = document.querySelectorAll('[data-field="skills"]');
+                const skills = Array.from(skillsElements).map(el => el.textContent.trim()).filter(text => text);
+                
+                const toolsElements = document.querySelectorAll('[data-field="toolsAndSystems"]');
+                const toolsAndSystems = Array.from(toolsElements).map(el => el.textContent.trim()).filter(text => text);
+                
+                // Collect experience data
+                const experienceElements = document.querySelectorAll('[data-field="experience"]');
+                const experiences = Array.from(experienceElements).map(expEl => {
+                    const companyEl = expEl.querySelector('[data-exp-field="company"]');
+                    const positionEl = expEl.querySelector('[data-exp-field="position"]');
+                    const periodEl = expEl.querySelector('[data-exp-field="period"]');
+                    const dutyElements = expEl.querySelectorAll('[data-exp-field="duty"]');
+                    
+                    return {
+                        company: companyEl ? companyEl.textContent.trim() : "",
+                        position: positionEl ? positionEl.textContent.trim() : "",
+                        period: periodEl ? periodEl.textContent.trim() : "",
+                        duties: Array.from(dutyElements).map(duty => duty.textContent.trim()).filter(text => text)
+                    };
+                }).filter(exp => exp.company && exp.position);
 
-            // Update the template data
-            if (!editedData[currentJobTitle]) {
-                editedData[currentJobTitle] = JSON.parse(JSON.stringify(cvTemplates[currentJobTitle]));
+                // Create a deep copy of the original template for this job
+                if (!editedData[currentJobTitle]) {
+                    editedData[currentJobTitle] = JSON.parse(JSON.stringify(cvTemplates[currentJobTitle]));
+                }
+                
+                // Update the template data with saved changes
+                editedData[currentJobTitle].profile = profile;
+                editedData[currentJobTitle].keySkills = keySkills.length > 0 ? keySkills : editedData[currentJobTitle].keySkills;
+                editedData[currentJobTitle].skills = skills.length > 0 ? skills : editedData[currentJobTitle].skills;
+                editedData[currentJobTitle].toolsAndSystems = toolsAndSystems.length > 0 ? toolsAndSystems : editedData[currentJobTitle].toolsAndSystems;
+                editedData[currentJobTitle].experience = experiences.length > 0 ? experiences : editedData[currentJobTitle].experience;
+
+                // Exit edit mode
+                toggleEditMode();
+                
+                // Regenerate CV with saved data
+                generateCV(currentJobTitle);
+                
+                // Show success message
+                showNotification('Changes saved successfully!', 'success');
+            } catch (error) {
+                console.error('Error saving changes:', error);
+                showNotification('Error saving changes. Please try again.', 'error');
             }
-            
-            editedData[currentJobTitle].profile = profile;
-            editedData[currentJobTitle].keySkills = keySkills;
-            editedData[currentJobTitle].skills = skills;
-            editedData[currentJobTitle].toolsAndSystems = toolsAndSystems;
-            editedData[currentJobTitle].experience = experiences;
-
-            // Exit edit mode
-            toggleEditMode();
-            
-            // Show success message
-            showNotification('Changes saved successfully!', 'success');
         }
 
         function showNotification(message, type) {
@@ -1180,8 +1219,38 @@
             }, 3000);
         }
 
+        function printCV() {
+            if (!currentJobTitle) {
+                showNotification('Please select a job title first', 'error');
+                return;
+            }
+            
+            // Temporarily hide edit mode styling for print
+            const wasEditMode = isEditMode;
+            if (isEditMode) {
+                makeContentReadonly();
+                document.getElementById('cvContainer').classList.remove('edit-mode');
+            }
+            
+            // Set document title for PDF filename
+            document.title = `Scott_Angelos_CV_${currentJobTitle.replace(/\s+/g, '_')}`;
+            
+            // Print the page
+            window.print();
+            
+            // Restore edit mode if it was active
+            if (wasEditMode) {
+                makeContentEditable();
+                document.getElementById('cvContainer').classList.add('edit-mode');
+            }
+            
+            // Reset document title
+            document.title = 'Scott Angelos - CV Dashboard';
+        }
+
         function generateCV(jobTitle) {
             currentJobTitle = jobTitle;
+            // Use edited data if available, otherwise use original template
             const template = editedData[jobTitle] || cvTemplates[jobTitle];
             if (!template) return;
 
