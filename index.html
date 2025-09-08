@@ -119,6 +119,38 @@
             background: rgba(93, 92, 222, 0.02);
             border-radius: 4px;
         }
+        .edit-controls {
+            display: none;
+        }
+        .edit-mode .edit-controls {
+            display: inline-flex;
+        }
+        .add-btn, .remove-btn {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+        }
+        .add-btn {
+            background: #10B981;
+            color: white;
+        }
+        .add-btn:hover {
+            background: #059669;
+        }
+        .remove-btn {
+            background: #EF4444;
+            color: white;
+        }
+        .remove-btn:hover {
+            background: #DC2626;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
@@ -1342,12 +1374,16 @@
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-key text-primary mr-2"></i>
                             Key Skills
+                            <div class="edit-controls ml-auto">
+                                <button class="add-btn" onclick="addKeySkill()" title="Add skill">+</button>
+                            </div>
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="keySkillsContainer">
                             ${template.keySkills.map(skill => `
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-chevron-right text-primary text-sm"></i>
                                     <span class="text-gray-700 dark:text-gray-300 text-sm font-medium" data-editable data-field="keySkills">${skill}</span>
+                                    <button class="remove-btn edit-controls" onclick="removeItem(this)" title="Remove skill">×</button>
                                 </div>
                             `).join('')}
                         </div>
@@ -1358,10 +1394,13 @@
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-tools text-primary mr-2"></i>
                             Tools & Systems
+                            <div class="edit-controls ml-auto">
+                                <button class="add-btn" onclick="addToolsAndSystems()" title="Add tool">+</button>
+                            </div>
                         </h3>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2" id="toolsSystemsContainer">
                             ${template.toolsAndSystems.map(tool => `
-                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium" data-editable data-field="toolsAndSystems">${tool}</span>
+                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium relative" data-editable data-field="toolsAndSystems">${tool}<button class="remove-btn edit-controls absolute -top-1 -right-1 w-4 h-4 text-xs" onclick="removeItem(this)" title="Remove tool">×</button></span>
                             `).join('')}
                         </div>
                     </div>
@@ -1371,12 +1410,16 @@
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-star text-primary mr-2"></i>
                             Additional Skills & Abilities
+                            <div class="edit-controls ml-auto">
+                                <button class="add-btn" onclick="addSkill()" title="Add skill">+</button>
+                            </div>
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2" id="skillsContainer">
                             ${template.skills.map(skill => `
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-check text-primary text-sm"></i>
                                     <span class="text-gray-700 dark:text-gray-300 text-sm" data-editable data-field="skills">${skill}</span>
+                                    <button class="remove-btn edit-controls" onclick="removeItem(this)" title="Remove skill">×</button>
                                 </div>
                             `).join('')}
                         </div>
@@ -1401,8 +1444,12 @@
                                             <li class="text-gray-700 dark:text-gray-300 text-sm flex items-start">
                                                 <i class="fas fa-chevron-right text-primary text-xs mt-1 mr-2 flex-shrink-0"></i>
                                                 <span data-editable data-exp-field="duty">${duty}</span>
+                                                <button class="remove-btn edit-controls ml-2" onclick="removeDuty(this)" title="Remove duty">×</button>
                                             </li>
                                         `).join('')}
+                                        <li class="edit-controls">
+                                            <button class="add-btn ml-4" onclick="addDuty(this.closest('[data-field=&quot;experience&quot;]'))" title="Add duty">+</button>
+                                        </li>
                                     </ul>
                                 </div>
                             `).join('')}
@@ -1414,35 +1461,42 @@
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <i class="fas fa-graduation-cap text-primary mr-2"></i>
                             Education & Certifications
+                            <div class="edit-controls ml-auto">
+                                <button class="add-btn" onclick="addEducation()" title="Add education">+</button>
+                            </div>
                         </h3>
-                        <div class="space-y-3">
+                        <div class="space-y-3" id="educationContainer">
                             <div class="flex items-start space-x-2">
                                 <i class="fas fa-certificate text-primary mt-1"></i>
-                                <div>
+                                <div class="flex-1">
                                     <p class="font-medium text-gray-900 dark:text-white" data-editable data-field="education">Payroll Administrator Certification</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400" data-editable data-field="education">Sage Pastel Payroll & HR (Modules 1-3)</p>
                                 </div>
+                                <button class="remove-btn edit-controls" onclick="removeEducation(this)" title="Remove education">×</button>
                             </div>
                             <div class="flex items-start space-x-2">
                                 <i class="fas fa-certificate text-primary mt-1"></i>
-                                <div>
+                                <div class="flex-1">
                                     <p class="font-medium text-gray-900 dark:text-white" data-editable data-field="education">Certified Xero Advisor</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400" data-editable data-field="education">Xero Certification Program</p>
                                 </div>
+                                <button class="remove-btn edit-controls" onclick="removeEducation(this)" title="Remove education">×</button>
                             </div>
                             <div class="flex items-start space-x-2">
                                 <i class="fas fa-book text-primary mt-1"></i>
-                                <div>
+                                <div class="flex-1">
                                     <p class="font-medium text-gray-900 dark:text-white" data-editable data-field="education">Bookkeeping Studies (Ongoing)</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400" data-editable data-field="education">Continuous Professional Development</p>
                                 </div>
+                                <button class="remove-btn edit-controls" onclick="removeEducation(this)" title="Remove education">×</button>
                             </div>
                             <div class="flex items-start space-x-2">
                                 <i class="fas fa-graduation-cap text-primary mt-1"></i>
-                                <div>
+                                <div class="flex-1">
                                     <p class="font-medium text-gray-900 dark:text-white" data-editable data-field="education">Matriculation Certificate</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400" data-editable data-field="education">Radley Private School (2012)</p>
                                 </div>
+                                <button class="remove-btn edit-controls" onclick="removeEducation(this)" title="Remove education">×</button>
                             </div>
                         </div>
                     </div>
@@ -1516,6 +1570,128 @@
             } else {
                 salaryInfo.classList.add('hidden');
                 chevron.classList.remove('rotate-180');
+            }
+        }
+
+        // Functions for adding and removing items
+        function addKeySkill() {
+            const container = document.getElementById('keySkillsContainer');
+            const newSkill = document.createElement('div');
+            newSkill.className = 'flex items-center space-x-2';
+            newSkill.innerHTML = `
+                <i class="fas fa-chevron-right text-primary text-sm"></i>
+                <span class="text-gray-700 dark:text-gray-300 text-sm font-medium editable" data-editable data-field="keySkills" contenteditable="true">New skill</span>
+                <button class="remove-btn edit-controls" onclick="removeItem(this)" title="Remove skill">×</button>
+            `;
+            container.appendChild(newSkill);
+            
+            // Focus on the new skill for immediate editing
+            const newSkillSpan = newSkill.querySelector('[data-editable]');
+            newSkillSpan.focus();
+            newSkillSpan.select();
+        }
+
+        function addToolsAndSystems() {
+            const container = document.getElementById('toolsSystemsContainer');
+            const newTool = document.createElement('span');
+            newTool.className = 'bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium editable';
+            newTool.setAttribute('data-editable', 'true');
+            newTool.setAttribute('data-field', 'toolsAndSystems');
+            newTool.contentEditable = true;
+            newTool.textContent = 'New tool';
+            
+            // Add remove button
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-btn edit-controls ml-2';
+            removeBtn.innerHTML = '×';
+            removeBtn.title = 'Remove tool';
+            removeBtn.onclick = () => removeItem(removeBtn);
+            
+            newTool.appendChild(removeBtn);
+            container.appendChild(newTool);
+            
+            // Focus on the new tool for immediate editing
+            newTool.focus();
+            const range = document.createRange();
+            const sel = window.getSelection();
+            range.setStart(newTool.firstChild, 0);
+            range.setEnd(newTool.firstChild, newTool.firstChild.textContent.indexOf('×'));
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+
+        function addSkill() {
+            const container = document.getElementById('skillsContainer');
+            const newSkill = document.createElement('div');
+            newSkill.className = 'flex items-center space-x-2';
+            newSkill.innerHTML = `
+                <i class="fas fa-check text-primary text-sm"></i>
+                <span class="text-gray-700 dark:text-gray-300 text-sm editable" data-editable data-field="skills" contenteditable="true">New skill</span>
+                <button class="remove-btn edit-controls" onclick="removeItem(this)" title="Remove skill">×</button>
+            `;
+            container.appendChild(newSkill);
+            
+            // Focus on the new skill for immediate editing
+            const newSkillSpan = newSkill.querySelector('[data-editable]');
+            newSkillSpan.focus();
+            newSkillSpan.select();
+        }
+
+        function removeItem(button) {
+            const item = button.closest('div, span');
+            if (item) {
+                item.remove();
+            }
+        }
+
+        function removeDuty(button) {
+            const duty = button.closest('li');
+            if (duty) {
+                duty.remove();
+            }
+        }
+
+        function addDuty(expDiv) {
+            const dutiesList = expDiv.querySelector('ul');
+            const newDuty = document.createElement('li');
+            newDuty.className = 'text-gray-700 dark:text-gray-300 text-sm flex items-start';
+            newDuty.innerHTML = `
+                <i class="fas fa-chevron-right text-primary text-xs mt-1 mr-2 flex-shrink-0"></i>
+                <span data-editable data-exp-field="duty" class="editable" contenteditable="true">New responsibility</span>
+                <button class="remove-btn edit-controls ml-2" onclick="removeDuty(this)" title="Remove duty">×</button>
+            `;
+            dutiesList.appendChild(newDuty);
+            
+            // Focus on the new duty for immediate editing
+            const newDutySpan = newDuty.querySelector('[data-editable]');
+            newDutySpan.focus();
+            newDutySpan.select();
+        }
+
+        function addEducation() {
+            const container = document.getElementById('educationContainer');
+            const newEducation = document.createElement('div');
+            newEducation.className = 'flex items-start space-x-2';
+            newEducation.innerHTML = `
+                <i class="fas fa-certificate text-primary mt-1"></i>
+                <div class="flex-1">
+                    <p class="font-medium text-gray-900 dark:text-white editable" data-editable data-field="education" contenteditable="true">New Certification/Degree</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 editable" data-editable data-field="education" contenteditable="true">Institution/Organization</p>
+                </div>
+                <button class="remove-btn edit-controls" onclick="removeEducation(this)" title="Remove education">×</button>
+            `;
+            container.appendChild(newEducation);
+            
+            // Focus on the new education title for immediate editing
+            const newEducationTitle = newEducation.querySelector('[data-editable]');
+            newEducationTitle.focus();
+            newEducationTitle.select();
+        }
+
+        function removeEducation(button) {
+            const education = button.closest('div');
+            if (education) {
+                education.remove();
             }
         }
 
